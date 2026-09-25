@@ -4,6 +4,54 @@
     --nav-text: #1C2B3A;
     --nav-height: 4.5rem;
 }
+
+body {
+    margin-top: 6rem;
+}
+
+.navbar{
+    background-color:#0d243c;
+}
+
+.navbar .collapse {
+    justify-content: space-between;
+}
+
+.nav-item {
+    margin: 0.2rem;
+}
+
+.nav-link {
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: white;
+    opacity: 0.85;
+}
+
+.navbar-toggler {
+    margin: 0.5rem;
+}
+
+.navbar-toggler > img {
+    width: 2rem;
+}
+
+.navbar-toggler:hover, .navbar-toggler:focus{
+    background-color: transparent;
+    border: none;
+}
+
+.log{
+    background-color:rgb(26, 93, 132);
+}
+
+.register{
+    background-color: rgb(13, 70, 103);
+}
+
 /*
 body {
     background: var(--body-background);
