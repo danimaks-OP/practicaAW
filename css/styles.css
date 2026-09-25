@@ -4,7 +4,7 @@
     --nav-text: #1C2B3A;
     --nav-height: 4.5rem;
 }
-
+/*
 body {
     background: var(--body-background);
     padding-top: var(--nav-height);
@@ -68,7 +68,7 @@ ul a:hover {
 .register-btn {
     background-color: #1e3348;
 }
-
+*/
 footer {
     display: flex;
     justify-content: space-around;
