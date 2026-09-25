@@ -1,16 +1,11 @@
-:root {
-    --body-background: #fafcff;
-    --nav: #d6effc;
-    --nav-text: #1C2B3A;
-    --nav-height: 4.5rem;
-}
-
 body {
-    margin-top: 6rem;
+    margin-top: 7rem;
+    background-color: #15375a;
 }
 
 .navbar{
     background-color:#0d243c;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .navbar .collapse {
@@ -45,78 +40,44 @@ body {
 }
 
 .log{
-    background-color:rgb(26, 93, 132);
+    background-color:rgb(212, 146, 33);
 }
 
 .register{
-    background-color: rgb(13, 70, 103);
+    background-color: rgb(0, 104, 164);
 }
 
-/*
-body {
-    background: var(--body-background);
-    padding-top: var(--nav-height);
-    margin: 0;
+main {
+    color: rgb(226, 236, 255);
 }
 
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--nav-height);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--nav);
+.program-highlights {
+    background-image: url("/assets/images/classmates-class.jpg");
+    background-size: cover;
 }
 
-.nav-left {
-    display: flex;
-    align-items: center;
-
-}
-
-.nav-left>img {
-    width: 3.8rem;
-    margin-left: 0.5rem;
-}
-
-nav ul {
-    display: flex;
-    margin: 1rem;
+.program-highlights > ul {
     padding: 0;
+    margin-top: 1.5rem;
+    height: 100%;
     list-style-type: none;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-nav a {
-    text-decoration: none;
-    padding: 0.6rem;
-    color: var(--nav-text);
-    font-family: Arial, Helvetica, sans-serif;
-    ;
-    font-weight: bold;
+.program-highlights > ul > li {
+    padding: 1.5rem 0px;
+    list-style-type: none;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.9s ease;
 }
 
-.login-items a {
-    color: white;
-    border-radius: 7px;
-    margin: 0.2rem;
-    transition: all 0.2s ease;
+.program-highlights > ul > li:hover {
+    background-color: rgba(0, 0, 0, 0.65);
+    box-shadow: 0 0 10px 2px rgba(4, 4, 4, 0.5);
 }
 
-ul a:hover {
-    opacity: 0.93;
-}
-
-.login-btn {
-    background-color: #194382;
-}
-
-.register-btn {
-    background-color: #1e3348;
-}
-*/
 footer {
     display: flex;
     justify-content: space-around;
