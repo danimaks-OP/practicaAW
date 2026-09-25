@@ -81,7 +81,7 @@
                 autonomía y confianza en su futuro académico y
                 profesional.
             </p>
-            <article class="carousel slide mt-5" id="carousel">
+            <article class="carousel slide mt-5" id="features">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="/assets/images/lesson.jpg" alt="Impartiendo clase">
@@ -98,7 +98,8 @@
                         <img src="/assets/images/professor.jpg" alt="Profesor educativo">
                         <div class="carousel-caption">
                             <h2>Conoce a tus docentes</h2>
-                            <p class="pt-1"> Consulta la información de los docentes del centro y conoce quiénes forman parte del
+                            <p class="pt-1"> Consulta la información de los docentes del centro y conoce quiénes forman
+                                parte del
                                 equipo encargado de acompañarte durante tu formación. </p>
                         </div>
                     </div>
@@ -114,11 +115,11 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#features" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                     <span class="visually-hidden">Prev</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#features" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -126,13 +127,67 @@
             <p class="my-4">
                 Gestiona tu actividad académica de forma sencilla desde una única plataforma
             </p>
+            <h2 class="mt-5">¡Puedes formar parte de nuestra comunidad ahora!</h2>
         </section>
-        <section>
-            <h2>Forma parte de nuestra comunidad educativa</h2>
-            <p>
-                Consulta nuestra oferta formativa y descubre todo lo que
-                nuestro centro puede ofrecerte.
-            </p>
+        <section class="accordion mt-5 mb-4" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse2" aria-controls="collapse2">
+                        ¿Cómo puedo matricularme en un curso?
+                    </button>
+                </h2>
+                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Selecciona el curso que te interese desde el apartado Cursos y consulta su información.
+                        Si dispone de plazas y está abierto el periodo de matrícula,
+                        podrás realizar la inscripción desde la propia plataforma.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                        ¿Puedo cancelar una matrícula?
+                    </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Sí. Desde el apartado de Mis matrículas puedes consultar tus
+                        matrículas activas y cancelar aquellas que permitan esta opción
+                        según las condiciones establecidas por el centro.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading5">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                        ¿Puedo modificar mis datos personales?
+                    </button>
+                </h2>
+                <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Sí. Puedes acceder a tu Perfil para consultar y actualizar tus
+                        datos personales, ¡salvo tu email!
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading6">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                        ¿Cómo puedo personalizar mi experiencia?
+                    </button>
+                </h2>
+                <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Accede al apartado de Accesibilidad desde tu cuenta para configurar
+                        las opciones disponibles y adaptar la plataforma a tus necesidades.
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     <footer class="modal-footer justify-content-between">

@@ -12,10 +12,6 @@ body {
     justify-content: space-between;
 }
 
-.nav-item {
-    margin: 0.2rem;
-}
-
 .nav-link {
     color: white;
     transition: all 0.2s ease;
@@ -45,6 +41,7 @@ body {
 
 .register{
     background-color: rgb(0, 104, 164);
+    margin-left: 1rem;
 }
 
 main {
@@ -100,8 +97,37 @@ main {
     border-radius: 20px;
 }
 
+.accordion-item {
+    background-color: #03508f;
+}
+
+.accordion-button {
+    background-color: #03508f;
+    color: rgb(226, 236, 255);
+}
+
+/* Bootstrap adds different style when collapsed, otherwise has priority */
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: rgb(0, 104, 164);
+    box-shadow: none;
+}
+
+.accordion-button::after {
+    background-image: url("/assets/icons/simple-arrow.svg");
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("/assets/icons/simple-arrow.svg");
+}
+
+.accordion-body{
+    background-color: rgb(0, 104, 164);
+}
+
 footer {
     background-color: #4a4a4a;
+    border-top-width: 0 !important;
 }
 
 footer p {
