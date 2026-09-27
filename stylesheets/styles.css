@@ -55,6 +55,11 @@ body {
 
 a.navbar-brand {
     margin-top: 5vh;
+    transition: all 1s ease;
+}
+
+a.navbar-brand:hover {
+    transform: scale(1.2);
 }
 
 .navbar-brand h1{
