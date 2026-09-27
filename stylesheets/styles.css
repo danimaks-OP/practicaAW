@@ -53,6 +53,19 @@ body {
     box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.153);
 }
 
+a.navbar-brand {
+    margin-top: 5vh;
+}
+
+.navbar-brand h1{
+    font-size: 6vw;
+    color: rgb(255, 157, 0);
+}
+
+.navbar-brand .eduka{
+    color: aliceblue;
+}
+
 main {
     color: rgb(226, 236, 255);
 }
@@ -137,6 +150,16 @@ main {
 footer {
     background-color: #4a4a4a;
     border-top-width: 0 !important;
+}
+
+form .btn {
+    background-color: rgb(229, 142, 2);
+    color:white
+}
+
+form .btn:hover {
+    background-color: rgb(252, 163, 19);
+    color:white
 }
 
 footer p {
