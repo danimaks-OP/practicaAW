@@ -152,6 +152,10 @@ footer {
     border-top-width: 0 !important;
 }
 
+.container-form {
+    padding: 0 10vw;
+}
+
 form .btn {
     background-color: rgb(229, 142, 2);
     color:white
