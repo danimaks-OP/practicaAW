@@ -1,5 +1,7 @@
 # Práctica · Aplicaciones Web
 
+Laboratorio 1: añadir nombre junto al logo, cambiar section del h1 por header, deben estar todas las paginas aunque vacías, miga de pan, estilos.css
+
 ## 1. Objetivo
 
 Desarrollar una plataforma web para la gestión de un centro de formación, evolucionando progresivamente desde una aplicación HTML/CSS hasta una solución completa con JavaScript, Node.js, Express y MariaDB.
