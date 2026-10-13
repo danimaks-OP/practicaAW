@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="assets/logos/icon_32.png">
+    <link rel="stylesheet" href="bootstrap/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/stylesG.css">
+    <title>Login</title>
+  </head>
+
+  <body class="vh-100 m-0">
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container-fluid text-center justify-content-center">
+            <a href="/indexG.html" class="navbar-brand">
+                <h1 class="">Centro de formación</h1>
+            </a>
+        </div>
+    </nav>
+    <main class="container h-100 align-content-center container-form">
+        <h2 class="text-center">Login</h2>
+        <form class="row has-validation" method="POST">
+          <div class="col-6">
+            <label for="input_nombre" class="form-label">Nombre</label> 
+            <input id="input_nombre" class="form-control"  placeholder="John" required>
+          </div>
+          <div class="col-6">
+            <label for="input_apellidos" class="form-label">Apellidos</label>
+            <input id="input_apellidos" class="form-control"  placeholder="Doe" required> 
+          </div>
+          <div class="col-12">
+            <label for="input_email" class="form-label mt-3">Email</label>
+            <input class="form-control" id="input_email" type="email" placeholder="name@example.com" required>
+            <label for="input_email" class="form-label mt-3">Email</label>
+            <input class="form-control" id="input_email" type="email" placeholder="name@example.com" required> 
+            <label for="input_passwd" class="form-label mt-3">Contraseña</label>
+            <input class="form-control" id="input_passwd" type="password" placeholder="Escriba aquí su contraseña" autocomplete="new-password" required>
+            <label for="input_conf_passwd" class="form-label mt-3">Confirmar contraseña</label>
+            <input class="form-control" id="input_conf_passwd" type="password" placeholder="Repite la contraseña" autocomplete="new-password" required>
+            <button class="login-btn w-100" type="submit">Registrarse</button>
+          </div>
+        </form>
+    </main>
+    <footer class="modal-footer justify-content-between fixed-bottom">
+      <p>Centro de formación y gestión académica</p>
+        <p>&copy; 2026 EdukaMadrid</p>
+        <p>By Daniel Maksymiv &amp; Guillermo Patiño</p>
+    </footer>
+  </body>
+</html>
