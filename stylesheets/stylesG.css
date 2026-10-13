@@ -1,5 +1,5 @@
 body{
-    padding-top: 4rem;
+    padding-top: 5rem;
 }
 
 main{
@@ -8,10 +8,13 @@ main{
 
 .navbar{
     background-color: blanchedalmond;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .nav-link{
     color:rgb(255, 255, 255);
+    font-size: 1.1rem;
 }
 
 .navbar ul{
@@ -55,7 +58,6 @@ main{
     margin-left: 1.3rem;
     margin-right: 0.3rem;
 }
-
 
 .news1 h2{ 
     text-align: center;
@@ -113,4 +115,63 @@ main{
 .program-content:hover{
     background-color: rgb(211, 210, 210);
     opacity: 0.85;
+}
+
+.login-btn {
+    background-color: rgb(180, 203, 223);
+}
+
+.navbar-brand h1{
+    color:rgb(12, 12, 112);
+}
+
+.nav-item .login-btn{
+    color:rgb(4, 28, 241);
+}
+
+.nav-item .login-btn:hover{
+    background-color: rgb(180, 203, 223);
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.register-btn{
+    background-color: rgb(67, 86, 138, 0.9);
+}
+
+.nav-item .register-btn{
+    color: aliceblue;
+}
+
+.nav-item .register-btn:hover{
+    background-color: rgb(67, 86, 138, 0.9);
+    opacity: 1;
+    transform: translateY(-1px); /*Hace que se eleve ligeramente*/
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.container-form{
+    padding-bottom: 8rem;
+}
+
+.container-form label{
+    margin-top: 1.5rem;
+}
+
+.container-form .login-btn{
+    margin-top: 2rem;
+    border: none;
+    box-shadow: none;
+}
+
+.login-btn:hover{
+    opacity: 1;
+    transform: translateY(-1px);
+    background-color: rgb(180, 203, 223);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.container-form .form-control, .container-form .login-btn{
+    height: 2.5rem;
 }

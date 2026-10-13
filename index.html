@@ -29,14 +29,18 @@
             </button>
         </div>
     </nav>
-    <main>
-        <section class="container justify-content-center text-center">
+    <!-- Sección principal -->
+    <main> 
+        <!-- Seccion para el encabezado principal -->
+                 <!--Alinea los elementos hijos del flexbox--> <!--Centra el texto plano-->
+        <section class="container justify-content-center text-center"> 
             <h1>Formación para construir tu futuro</h1>
             <p class="mx-5">Apostamos por una gestión académica eficiente, cercana e innovadora, orientada a facilitar
                 la organización y el seguimiento de toda la actividad educativa. Nuestra plataforma permite gestionar
                 cursos, aulas, clases, docentes y alumnado de forma sencilla y centralizada, facilitando la coordinación
                 y el correcto funcionamiento del centro.</p>
         </section>
+        <!-- Seccion secundaria -->
         <section class="program-highlights">
             <ul class="row">
                 <li>
@@ -65,6 +69,8 @@
                 </li>
             </ul>
         </section>
+
+        <!--Sección terciaria-->
         <section class="container justify-content-center text-center">
             <p>
                 Creemos que la formación debe ir más allá de la
@@ -81,9 +87,11 @@
                 autonomía y confianza en su futuro académico y
                 profesional.
             </p>
+            <!--slide activa el componente de transicion-->
             <article class="carousel slide mt-5" id="features">
+                <!--Caja contenedora general de todas las "diapositivas"-->
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <div class="carousel-item active"> <!--Con active se indica que es la imagen inicial por defecto-->
                         <img src="/assets/images/lesson.jpg" alt="Impartiendo clase">
                         <div class="carousel-caption">
                             <h2>Consulta los cursos</h2>
@@ -94,10 +102,12 @@
                             </p>
                         </div>
                     </div>
+                    <!--1era diapositiva del carrusel-->
                     <div class="carousel-item">
                         <img src="/assets/images/professor.jpg" alt="Profesor educativo">
                         <div class="carousel-caption">
                             <h2>Conoce a tus docentes</h2>
+                            <!-- pt-1 hace un pequeño padding-top-->
                             <p class="pt-1"> Consulta la información de los docentes del centro y conoce quiénes forman
                                 parte del
                                 equipo encargado de acompañarte durante tu formación. </p>
@@ -115,10 +125,12 @@
                         </div>
                     </div>
                 </div>
+                <!--Indica que al hacer clic en el boton prev, el carrusel con id "features" deba retroceder la diapositiva-->
                 <button class="carousel-control-prev" type="button" data-bs-target="#features" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
-                    <span class="visually-hidden">Prev</span>
+                    <span class="visually-hidden">Prev</span> <!--Texto oculto pero disponible si se necesita por accesibilidad-->
                 </button>
+                <!--Indica que al hacer clic en el boton prev, el carrusel con id "features" deba retroceder la diapositiva-->
                 <button class="carousel-control-next" type="button" data-bs-target="#features" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                     <span class="visually-hidden">Next</span>
@@ -129,14 +141,19 @@
             </p>
             <h2 class="mt-5">¡Puedes formar parte de nuestra comunidad ahora!</h2>
         </section>
+        <!--Sección para la parte de desplegables (acordeón)-->
         <section class="accordion mt-5 mb-4" id="faqAccordion">
+            <!--1er item del acordeón-->
             <div class="accordion-item">
+                <!--Parte "fija"/cabecera del acordeon-->
                 <h2 class="accordion-header" id="faq1">
+                    <!--por defecto empieza en collapsed-->
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapse2" aria-controls="collapse2">
                         ¿Cómo puedo matricularme en un curso?
                     </button>
-                </h2>
+                </h2>                <!--con data-bs-parent se consigue que al abrir una, las demás que estaban abiertas se cierren-->
+                <!--Parte que se despliega del acordeon-->
                 <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
                         Selecciona el curso que te interese desde el apartado Cursos y consulta su información.
@@ -145,6 +162,7 @@
                     </div>
                 </div>
             </div>
+            <!--2do item del acordeón-->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading3">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -160,6 +178,7 @@
                     </div>
                 </div>
             </div>
+            <!--3er item del acordeón-->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading5">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -174,6 +193,7 @@
                     </div>
                 </div>
             </div>
+            <!--4to item del acordeón-->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading6">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

@@ -8,11 +8,11 @@ body {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
-.navbar .collapse {
+.navbar .collapse { /*Cualquier elemento dentro de la navbar que pertenezca a la clase collapse*/
     justify-content: space-between;
 }
 
-.nav-link {
+.nav-link { /*Clase dedicada a los links dentro de la barra de navegacion*/
     color: white;
     transition: all 0.2s ease;
 }
@@ -22,28 +22,28 @@ body {
     opacity: 0.85;
 }
 
-.navbar-toggler {
+.navbar-toggler { /*Clase para el boton de la navbar*/ /*En este caso, solo en moviles pq en HTML esta definido como navbar-expand-md*/
     margin: 0.5rem;
 }
 
-.navbar-toggler > img {
+.navbar-toggler > img { /*Para las imagenes de dentro del navBar SOLO UN NIVEL DE ANIDACION*/
     width: 2rem;
 }
 
-.navbar-toggler:hover, .navbar-toggler:focus{
+.navbar-toggler:hover, .navbar-toggler:focus{ /*Se aplican ambas reglas*/
     background-color: transparent;
     border: none;
 }
 
-.nav-options .nav-item {
+.nav-options .nav-item { /*Para TODOS los elementos de la navbar, que esten dentro de las nav-options*/
     margin: 0 1.1rem;
 }
 
-.log-btn{
+.log-btn{ /*Para el boton de inicio de sesion*/
     background-color:rgb(212, 146, 33);
 }
 
-.register-btn{
+.register-btn{ /*Para el boton de registrarse*/
     background-color: rgb(0, 104, 164);
     margin-left: 1.3rem;
     margin-right: 0.3rem;
@@ -53,7 +53,7 @@ body {
     box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.153);
 }
 
-a.navbar-brand {
+a.navbar-brand { /*Lo aplica a un enlace a que tenga la clase navbar-brand*/
     margin-top: 5vh;
     transition: all 1s ease;
 }
@@ -62,12 +62,12 @@ a.navbar-brand:hover {
     transform: scale(1.2);
 }
 
-.navbar-brand h1{
+.navbar-brand h1{ /*Para los elementos h1 de dentro de un elemento con la clase navbar-brand*/
     font-size: 6vw;
     color: rgb(255, 157, 0);
 }
 
-.navbar-brand .eduka{
+.navbar-brand .eduka{ /*Para TODOS los .eduka dentro de la clase .navbar-brand*/
     color: aliceblue;
 }
 
@@ -75,30 +75,30 @@ main {
     color: rgb(226, 236, 255);
 }
 
-.program-highlights {
+.program-highlights { /*Para los elementos con parrafo despues del navbar*/
     margin: 2.5rem 0;
     background-image: url("/assets/images/classmates-class.jpg");
-    background-size: cover;
+    background-size: cover; /*Hace que se rellene todo, sin dejar huecos*/
 }
 
-.program-highlights > ul {
+.program-highlights > ul { /*Para la ul dentro de un nivel de anidacion de los program-highlights*/
     margin: 0;
     padding: 0;
-    list-style-type: none;
+    list-style-type: none; /*Elimina los puntos/indices que indican que es una lista*/
     text-align: center;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.program-highlights > ul > li {
-    padding: 2rem 1rem;
+.program-highlights > ul > li { /*Para todos los elementos listados dentro de la ul*/
+    padding: 2rem 1rem; /*1er valor: para arriba y abajo, 2do valor: para derecha e izquierda*/
     list-style-type: none;
     text-align: center;
     transition: all 0.9s ease;
 }
 
 .program-highlights > ul > li:hover {
-    background-color: rgba(0, 0, 0, 0.35);
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.35); /*Color principal al pasar por encima*/
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.35); /*Color de sombra al rededor de color ppal*/
 }
 
 .carousel-inner {
