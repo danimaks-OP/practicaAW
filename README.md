@@ -1,6 +1,7 @@
 # Práctica · Aplicaciones Web
 
-Laboratorio 1: añadir nombre junto al logo, cambiar section del h1 por header, deben estar todas las paginas aunque vacías, miga de pan, estilos.css
+**Validar HTML:** validator.w3.org
+**Validar CSS:** https://jigsaw.w3.org/css-validator
 
 ## 1. Objetivo
 
