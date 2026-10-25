@@ -96,14 +96,6 @@ body {
     background-color: var(--color-secondary);
 }
 
-.navbar-nav .nav-link.btn {
-    --bs-btn-color: #ffffff;
-    --bs-btn-hover-color: #ffffff;
-    --bs-btn-active-color: #ffffff;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
 .log-btn:hover,
 .register-btn:hover {
     box-shadow: 0 0 4px 3px var(--shadow);
