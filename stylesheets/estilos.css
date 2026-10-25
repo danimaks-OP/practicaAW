@@ -249,3 +249,13 @@ footer p {
     padding: 1rem 1.5rem;
     margin: 0;
 }
+
+form .btn{
+    background-color:var(--color-secondary);
+    color: white;
+}
+
+form .btn:hover, form .btn:focus{
+    background-color: var(--color-secondary-light);
+    color: white;
+}
