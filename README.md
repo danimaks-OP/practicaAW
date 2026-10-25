@@ -1,6 +1,6 @@
 # Práctica · Aplicaciones Web
 
-**Validar HTML:** validator.w3.org
+**Validar HTML:** https://validator.w3.org <br>
 **Validar CSS:** https://jigsaw.w3.org/css-validator
 
 ## 1. Objetivo
