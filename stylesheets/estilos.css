@@ -1,0 +1,251 @@
+:root {
+    --color-bg: #f3f6fa;
+    --color-bg-soft: #e3ecf6;
+    --color-primary: #2a6fa8;
+    --color-primary-dark: #1b4164;
+    --color-secondary: #e58e02;
+    --color-secondary-light: #ffbc50;
+    --color-text: #2e455f;
+    --shadow: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    background-color: var(--color-bg);
+}
+
+.navbar {
+    background-color: var(--color-primary-dark);
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+.navbar .collapse {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-right: 1.6rem;
+}
+
+.navbar-brand img {
+    height: 3rem;
+    width: auto;
+}
+
+.navbar-brand .brand-name {
+    font-size: 1.45rem;
+    font-weight: bold;
+    color: var(--color-secondary-light);
+}
+
+/* Solo cuando no se contrae el menu */
+.navbar .collapse:not(.show) ul {
+    gap: 1rem;
+}
+
+.navbar .collapse:not(.show) li + li {
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    padding-left: 1rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #ffffff;
+    opacity: 0.85;
+}
+
+.logout {
+    color: #ff7c6b;
+}
+
+.logout:hover, .logout:focus {
+    color: rgb(255, 47, 47);
+}
+
+.navbar-toggler {
+    padding: 0.4rem;
+    border: none;
+}
+
+.navbar-toggler > img {
+    width: 2rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* Necesario para mostrarse correctamente con bootstrap */
+.log-btn {
+    background-color: var(--color-primary);
+}
+
+.register-btn {
+    background-color: var(--color-secondary);
+}
+
+.navbar-nav .nav-link.btn {
+    --bs-btn-color: #ffffff;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-active-color: #ffffff;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.log-btn:hover,
+.register-btn:hover {
+    box-shadow: 0 0 4px 3px var(--shadow);
+}
+
+main {
+    color: var(--color-text);
+}
+
+h1{
+    color: var(--color-primary-dark);
+    padding-top: 1rem;
+}
+
+.breadcrumb-bar {
+    background-color: var(--color-bg-soft);
+    border-bottom: 2px solid var(--color-primary);
+    padding: 0.4rem 1.7rem;
+    margin-bottom: 2rem;
+}
+
+.breadcrumb {
+    --bs-breadcrumb-divider: '>';
+    margin: 0;
+}
+
+.breadcrumb a {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover, .breadcrumb a:focus {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.program-highlights {
+    margin: 2.5rem 0;
+    background-image: url("../assets/images/classmates-class.jpg");
+    background-size: cover;
+    color: #ffffff;
+}
+
+.program-highlights > ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    background-color: rgba(21, 53, 85, 0.8);
+}
+
+.program-highlights > ul > li {
+    padding: 2rem 1rem;
+    transition: all 0.9s ease;
+}
+
+.program-highlights > ul > li:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.program-highlights h3 {
+    font-size: 2rem;
+}
+
+.carousel-inner {
+    height: 40rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.carousel-caption {
+    padding: 2rem;
+    background-color: rgba(21, 53, 85, 0.8);
+    border-top: 4px solid var(--color-secondary);
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.carousel-caption h3{
+    font-size: 2rem;
+}
+
+.incentive{
+    color: var(--color-primary-dark);
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.accordion-item {
+    background-color: var(--color-primary);
+}
+
+.accordion-button {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+/* Necesario para mostrarse correctamente con bootstrap */
+.accordion-button:not(.collapsed) {
+    color: #ffffff;
+    background-color: var(--color-primary-dark);
+    box-shadow: none;
+}
+
+.accordion-button::after {
+    background-image: url("../assets/icons/simple-arrow.svg");
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("../assets/icons/simple-arrow.svg");
+}
+
+.accordion-body {
+    background-color: var(--color-bg-soft);
+    color: var(--color-text);
+}
+
+footer {
+    background-color: var(--color-primary-dark);
+}
+
+footer p {
+    color: #ffffff;
+    font-size: 0.8rem;
+    padding: 1rem 1.5rem;
+    margin: 0;
+}
