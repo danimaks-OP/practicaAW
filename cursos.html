@@ -27,7 +27,8 @@
                 <nav aria-label="Navegación principal">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="./index.html" aria-current="page">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./cursos.html" aria-current="page">Cursos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./cursos.html" aria-current="page">Cursos</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="./docentes.html">Docentes</a></li>
                         <li class="nav-item"><a class="nav-link" href="./aulas.html">Aulas</a></li>
                         <li class="nav-item"><a class="nav-link" href="./matriculas.html">Mis matrículas</a></li>
@@ -52,6 +53,24 @@
                 <li class="breadcrumb-item active" aria-current="page">Cursos</li>
             </ol>
         </nav>
+        <div class="container">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Duración</th>
+                        <th>Plazas disponibles</th>
+                    </tr>
+                </thead>
+                <tbody id="courses_tab">
+                </tbody>
+            </table>
+            <form>
+                
+            </form>
+        </div>
     </main>
     <footer class="d-flex flex-wrap justify-content-between">
         <p>Centro de formación y gestión académica</p>
@@ -59,6 +78,7 @@
         <p>By Daniel Maksymiv &amp; Guillermo Patiño</p>
     </footer>
     <script src="./bootstrap/public/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/cursos.js"></script>
 </body>
 
 </html>
