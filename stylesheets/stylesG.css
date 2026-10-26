@@ -1,29 +1,36 @@
 body{
     padding-top: 5rem;
+    font-family: 'Nunito', sans-serif;
+    background-color: #F4F6F9;
+    color: #2D3142;
 }
 
 main{
-    padding:0.2rem;
+    padding: 1rem 2rem;
 }
 
+/* ---------- Menú de navegación ---------- */
+
 .navbar{
-    background-color: blanchedalmond;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    background-color: white;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 3px solid #43568A; /*Línea azul debajo del menú*/
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .nav-link{
-    color:rgb(255, 255, 255);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
 }
 
 .navbar ul{
-    gap: 1.3rem;
+    gap: 0.6rem;
 }
 
 .navbar li + li{
-    border-left: 1px solid rgba(201, 126, 13, 0.2);
-    padding-left: 1rem;
+    border-left: 1px solid #E3EAF3;
+    padding-left: 0.6rem;
 }
 
 .navbar-collapse{
@@ -32,6 +39,12 @@ main{
 
 .navbar-toggler{
     margin: 0.5rem;
+    background-color: white;
+    border: 2px solid #43568A;
+}
+
+.navbar-toggler:hover{
+    background-color: #E3EAF3;
 }
 
 .navbar-toggler > img{
@@ -39,29 +52,37 @@ main{
 }
 
 .nav-link{
-    padding:0.5rem 1rem;
-    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
     transition: background-color 0.2s;
 }
 
 .nav-item .nav-link{
-    color:rgb(67, 86, 138);
+    color: #43568A;
 }
 
-.nav-link:hover{
-    background-color:rgb(228, 226, 204);
-    opacity: 0.6;
+.nav-item .nav-link:hover{
+    background-color: #E3EAF3;
+    color: #34446F;
+}
+
+/*Enlace de la página en la que estás (el que tiene aria-current="page")*/
+.nav-item .nav-link[aria-current="page"]{
+    background-color: #43568A;
+    color: white;
 }
 
 .id-btn{
-    background-color: rgb(67, 86, 138);
+    background-color: #43568A;
     margin-left: 1.3rem;
     margin-right: 0.3rem;
 }
 
-.news1 h2{ 
+/* ---------- Noticias ---------- */
+
+.news1 h2{
     text-align: center;
-    color: rgb(67, 86, 138);
+    color: #43568A;
     font-weight: normal;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); /*Línea para debajo del texto*/
     padding-bottom: 0.5rem;
@@ -69,7 +90,7 @@ main{
 }
 
 .news1 ul{
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     list-style: none;
@@ -101,81 +122,206 @@ main{
     background-color: rgba(67, 86, 138, 0.9);
 }
 
+/* ---------- Portada: Educación, Atención, Innovación ---------- */
+
 .program-definitions{
-    margin-top: 1rem;
+    max-width: 1100px;
+    margin: 3rem auto;
+}
+
+.program-definitions ul{
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 
 .program-content{
-    padding: 0.7rem;
+    flex: 1; /*Las tres cajas miden lo mismo*/
+    padding: 1.5rem;
     list-style: none;
     text-align: center;
-    border-top: 1px solid rgba(0, 0, 0, 0.1); /*Línea para debajo del texto*/
+    background-color: white;
+    border-top: 4px solid #43568A; /*Línea azul arriba de cada caja*/
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.program-content h3{
+    color: #43568A;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.program-content p{
+    color: #555;
+    margin: 0;
 }
 
 .program-content:hover{
-    background-color: rgb(211, 210, 210);
-    opacity: 0.85;
+    transform: translateY(-4px); /*La caja sube un poco*/
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
+/* ---------- Botones de Iniciar sesión y Registrarse ---------- */
+
 .login-btn {
-    background-color: rgb(180, 203, 223);
+    background-color: #E3EAF3;
 }
 
 .navbar-brand h1{
-    color:rgb(12, 12, 112);
+    color: #43568A;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
 }
 
 .nav-item .login-btn{
-    color:rgb(4, 28, 241);
+    color: #43568A;
 }
 
 .nav-item .login-btn:hover{
-    background-color: rgb(180, 203, 223);
-    opacity: 1;
+    background-color: #B4CBDF;
+    color: #34446F;
     transform: translateY(-1px);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 .register-btn{
-    background-color: rgb(67, 86, 138, 0.9);
+    background-color: #43568A;
 }
 
 .nav-item .register-btn{
-    color: aliceblue;
+    color: white;
 }
 
 .nav-item .register-btn:hover{
-    background-color: rgb(67, 86, 138, 0.9);
-    opacity: 1;
+    background-color: #34446F;
+    color: white;
     transform: translateY(-1px); /*Hace que se eleve ligeramente*/
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
+/* ---------- Formularios de Login y Registro ---------- */
+
 .container-form{
+    max-width: 500px;
     padding-bottom: 8rem;
 }
 
+.container-form h2{
+    color: #43568A;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/*Caja blanca alrededor del formulario*/
+.container-form form{
+    background-color: white;
+    padding: 1rem 2rem 2rem 2rem;
+    margin: 0;
+    border-top: 4px solid #43568A;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 .container-form label{
-    margin-top: 1.5rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.container-form .form-control:focus{
+    border-color: #43568A;
+    box-shadow: 0 0 0 3px rgba(67, 86, 138, 0.2);
 }
 
 .container-form .login-btn{
     margin-top: 2rem;
     border: none;
-    box-shadow: none;
+    border-radius: 0.5rem;
+    background-color: #43568A;
+    color: white;
+    font-weight: 700;
 }
 
-.login-btn:hover{
-    opacity: 1;
+.container-form .login-btn:hover{
+    background-color: #34446F;
     transform: translateY(-1px);
-    background-color: rgb(180, 203, 223);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .container-form .form-control, .container-form .login-btn{
-    height: 2.5rem;
+    height: 2.75rem;
 }
+
+/* ---------- Migas de pan (Inicio > Cursos) ---------- */
 
 .breadcrumb {
     --bs-breadcrumb-divider: '>';
+    background-color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.breadcrumb a{
+    color: #43568A;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover{
+    text-decoration: underline;
+}
+
+/* ---------- Pie de página ---------- */
+
+.modal-footer{
+    background-color: white;
+    border-top: 1px solid #E3EAF3;
+    padding: 0.5rem 2rem;
+    color: #6C757D;
+    font-size: 0.9rem;
+}
+
+.modal-footer p{
+    margin: 0;
+}
+
+/* ---------- Pantallas pequeñas (móvil) ---------- */
+
+@media (max-width: 767px){
+    /*Quitamos las rayas entre enlaces porque van uno debajo de otro*/
+    .navbar li + li{
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .navbar ul{
+        gap: 0.2rem;
+    }
+
+    .navbar-collapse{
+        margin-left: 0;
+        order: 2; /*El menú se abre debajo...*/
+    }
+
+    .navbar-toggler{
+        order: 1; /*...y el botón se queda arriba a la derecha*/
+    }
+
+    /*Las tres cajas una debajo de otra*/
+    .program-definitions ul{
+        flex-direction: column;
+    }
+
+    .news1 ul{
+        grid-template-columns: 1fr;
+    }
+
+    .container-form form{
+        padding: 1rem 1.2rem 1.5rem 1.2rem;
+    }
 }
