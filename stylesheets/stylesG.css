@@ -175,3 +175,7 @@ main{
 .container-form .form-control, .container-form .login-btn{
     height: 2.5rem;
 }
+
+.breadcrumb {
+    --bs-breadcrumb-divider: '>';
+}
