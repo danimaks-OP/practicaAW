@@ -1,6 +1,6 @@
 body{
-    padding-top: 5rem;
-    font-family: 'Nunito', sans-serif;
+    padding-top: 5rem; /*Deja espacio arriba*/
+    font-family: sans-serif; 
     background-color: #F4F6F9;
     color: #2D3142;
 }
@@ -16,7 +16,7 @@ main{
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
     border-bottom: 3px solid #43568A; /*Línea azul debajo del menú*/
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /*Añade una sombra*/
 }
 
 .nav-link{
@@ -28,16 +28,16 @@ main{
     gap: 0.6rem;
 }
 
-.navbar li + li{
-    border-left: 1px solid #E3EAF3;
-    padding-left: 0.6rem;
+.navbar li + li{ /*Un li que va justo detras de un li*/
+    border-left: 1px solid #E3EAF3; /*Linea vertical que sirve de separador*/
+    padding-left: 0.6rem; /*Separa el texto de la linea vertical*/
 }
 
 .navbar-collapse{
     margin-left: 1.3rem;
 }
 
-.navbar-toggler{
+.navbar-toggler{ /*Boton de stripes que sale en movil*/
     margin: 0.5rem;
     background-color: white;
     border: 2px solid #43568A;
@@ -53,8 +53,8 @@ main{
 
 .nav-link{
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.2s;
+    border-radius: 0.5rem; /*Redondea los bordes*/
+    transition: background-color 0.2s; /*Transicion mas suave*/
 }
 
 .nav-item .nav-link{
@@ -66,9 +66,8 @@ main{
     color: #34446F;
 }
 
-/*Enlace de la página en la que estás (el que tiene aria-current="page")*/
-.nav-item .nav-link[aria-current="page"]{
-    background-color: #43568A;
+.nav-item .nav-link[aria-current="page"]{ /*Para la pagina "current"*/
+    background-color: #43568A; /*Cambia el fondo para que se sepa donde estamos*/
     color: white;
 }
 
@@ -89,17 +88,13 @@ main{
     margin-bottom: 1rem;
 }
 
-.news1 ul{
+.news1 ul{ /*Para la lista desordenada*/
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /*3 columnas iguales*/
     gap: 20px;
-    list-style: none;
+    list-style: none; /*Quita los puntos que salen con las listas*/
     padding: 0;
     margin: 0;
-}
-
-.news-item{
-    flex: 1;
 }
 
 .news-link{
@@ -126,7 +121,7 @@ main{
 
 .program-definitions{
     max-width: 1100px;
-    margin: 3rem auto;
+    margin: 3rem auto; /*Deja 3rem arriba y abajo*/
 }
 
 .program-definitions ul{
@@ -228,11 +223,11 @@ main{
 }
 
 .container-form label{
-    margin-top: 1rem;
+    margin-top: 1rem; /*Separa cada etiqueta del campo de encima*/
     font-weight: 600;
 }
 
-.container-form .form-control:focus{
+.container-form .form-control:focus{ /*El campo seleccionado (en el que se está escribiendo)*/
     border-color: #43568A;
     box-shadow: 0 0 0 3px rgba(67, 86, 138, 0.2);
 }
@@ -259,7 +254,7 @@ main{
 /* ---------- Migas de pan (Inicio > Cursos) ---------- */
 
 .breadcrumb {
-    --bs-breadcrumb-divider: '>';
+    --bs-breadcrumb-divider: '>'; /*Simbolo para las "migas de pan" (bootstrap)*/
     background-color: white;
     padding: 0.8rem 1.2rem;
     border-radius: 0.5rem;
@@ -276,7 +271,7 @@ main{
     text-decoration: underline;
 }
 
-/* ---------- Pie de página ---------- */
+/* ---------- Footer ---------- */
 
 .modal-footer{
     background-color: white;
