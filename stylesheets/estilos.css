@@ -46,7 +46,7 @@ body {
     gap: 1rem;
 }
 
-.navbar .collapse:not(.show) li + li {
+.navbar .collapse:not(.show) li+li {
     border-left: 1px solid rgba(255, 255, 255, 0.25);
     padding-left: 1rem;
 }
@@ -56,7 +56,8 @@ body {
     transition: all 0.2s ease;
 }
 
-.nav-link:hover, .nav-link:focus {
+.nav-link:hover,
+.nav-link:focus {
     color: #ffffff;
     opacity: 0.85;
 }
@@ -65,7 +66,8 @@ body {
     color: #ff7c6b;
 }
 
-.logout:hover, .logout:focus {
+.logout:hover,
+.logout:focus {
     color: rgb(255, 47, 47);
 }
 
@@ -74,7 +76,7 @@ body {
     border: none;
 }
 
-.navbar-toggler > img {
+.navbar-toggler>img {
     width: 2rem;
 }
 
@@ -87,7 +89,6 @@ body {
     outline-offset: 2px;
 }
 
-/* Necesario para mostrarse correctamente con bootstrap */
 .log-btn {
     background-color: var(--color-primary);
 }
@@ -96,16 +97,27 @@ body {
     background-color: var(--color-secondary);
 }
 
-.log-btn:hover,
 .register-btn:hover {
     box-shadow: 0 0 4px 3px var(--shadow);
+}
+
+.login-dropdown {
+    width: 18rem;
+    top: 100%;
+    right: 0;
+    left: auto;
+}
+
+.dropdown:hover > .login-dropdown,
+.dropdown:focus-within > .login-dropdown {
+    display: block;
 }
 
 main {
     color: var(--color-text);
 }
 
-h1{
+h1 {
     color: var(--color-primary-dark);
     padding-top: 1rem;
 }
@@ -127,7 +139,8 @@ h1{
     text-decoration: none;
 }
 
-.breadcrumb a:hover, .breadcrumb a:focus {
+.breadcrumb a:hover,
+.breadcrumb a:focus {
     color: var(--color-primary);
     text-decoration: underline;
 }
@@ -144,7 +157,7 @@ h1{
     color: #ffffff;
 }
 
-.program-highlights > ul {
+.program-highlights>ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -152,12 +165,12 @@ h1{
     background-color: rgba(21, 53, 85, 0.8);
 }
 
-.program-highlights > ul > li {
+.program-highlights>ul>li {
     padding: 2rem 1rem;
     transition: all 0.9s ease;
 }
 
-.program-highlights > ul > li:hover {
+.program-highlights>ul>li:hover {
     background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
 }
@@ -192,11 +205,11 @@ h1{
     color: #ffffff;
 }
 
-.carousel-caption h3{
+.carousel-caption h3 {
     font-size: 2rem;
 }
 
-.incentive{
+.incentive {
     color: var(--color-primary-dark);
     font-size: 1.75rem;
     font-weight: bold;
@@ -242,12 +255,13 @@ footer p {
     margin: 0;
 }
 
-form .btn{
-    background-color:var(--color-secondary);
+form .btn {
+    background-color: var(--color-secondary);
     color: white;
 }
 
-form .btn:hover, form .btn:focus{
+form .btn:hover,
+form .btn:focus {
     background-color: var(--color-secondary-light);
     color: white;
 }
