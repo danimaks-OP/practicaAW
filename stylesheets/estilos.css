@@ -218,11 +218,7 @@ h1{
     box-shadow: none;
 }
 
-.accordion-button::after {
-    background-image: url("../assets/icons/simple-arrow.svg");
-}
-
-.accordion-button:not(.collapsed)::after {
+.accordion-button::after, .accordion-button:not(.collapsed)::after {
     background-image: url("../assets/icons/simple-arrow.svg");
 }
 
