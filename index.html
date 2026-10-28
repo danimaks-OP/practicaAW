@@ -35,7 +35,26 @@
                 </nav>
                 <nav aria-label="Navegación para el usuario">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="./accesibilidad.html">Accesibilidad</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="./accesibilidad.html">Accesibilidad</a>
+                            <div class="dropdown-menu dropdown-element p-3">
+                                <form action="#" method="post" aria-label="Iniciar sesión" id="login_form">
+                                    <div class="mb-2">
+                                        <label for="login_email">Correo electrónico</label>
+                                        <input type="email" name="login_email" id="login_email"
+                                            placeholder="Introduzca su email de registro"
+                                            class="form-control form-control-sm" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="login_passwd">Contraseña</label>
+                                        <input type="password" name="login_passwd" id="login_passwd"
+                                            placeholder="Introduzca su contraseña" class="form-control form-control-sm"
+                                            minlength="8" maxlength="64" required>
+                                    </div>
+                                    <button type="submit" class="btn w-100">Entrar</button>
+                                </form>
+                            </div>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="./perfil.html">Perfil</a></li>
                         <li class="nav-item"><a class="nav-link text-decoration-underline fw-bold logout"
                                 href="#">Cerrar sesión</a>

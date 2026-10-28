@@ -101,15 +101,15 @@ body {
     box-shadow: 0 0 4px 3px var(--shadow);
 }
 
-.login-dropdown {
+.dropdown-element {
     width: 18rem;
     top: 100%;
     right: 0;
     left: auto;
 }
 
-.dropdown:hover > .login-dropdown,
-.dropdown:focus-within > .login-dropdown {
+.dropdown:hover > .dropdown-element,
+.dropdown:focus-within > .dropdown-element {
     display: block;
 }
 

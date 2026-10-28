@@ -54,6 +54,7 @@
             </ol>
         </nav>
         <div class="container">
+            <h1 class="text-center my-3">Portal de cursos</h1>
             <table class="table table-primary">
                 <thead>
                     <tr>
@@ -67,9 +68,43 @@
                 <tbody id="courses_tab">
                 </tbody>
             </table>
-            <form>
-                
-            </form>
+            <section class="container my-5">
+                <h2 class="my-3">Agregar curso</h2>
+                <form action="#" method="post" id="course_form">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-3">
+                            <label for="id_course">ID</label>
+                            <input type="number" name="id_course" id="id_course" class="form-control"
+                                placeholder="Identificador del curso" required>
+                        </div>
+                        <div class="col-md-9">
+                            <label for="name_course">Nombre</label>
+                            <input type="text" name="name_course" id="name_course" class="form-control"
+                                placeholder="Nombre del curso" required>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-12">
+                            <label for="category_course">Categoría</label>
+                            <input type="text" name="category_course" id="category_course" class="form-control"
+                                placeholder="Categoría a la que pertenece" required>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="duration_course">Duración</label>
+                            <input type="number" name="duration_course" id="duration_course" class="form-control"
+                                placeholder="Duración en minutos" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="places_course">Plazas disponibles</label>
+                            <input type="number" name="places_course" id="places_course" class="form-control"
+                                placeholder="Introduzca las plazas disponibles" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn w-100 mt-2">Añadir curso</button>
+                </form>
+            </section>
         </div>
     </main>
     <footer class="d-flex flex-wrap justify-content-between">
