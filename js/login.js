@@ -31,6 +31,7 @@ form.addEventListener("submit", function (e) {
 
     if (!form.checkValidity()) return;
 
+    // Modal
     document.getElementById("loginModalEmail").textContent = email.value;
     const modal = new bootstrap.Modal(document.getElementById("successLogin"));
     modal.show();

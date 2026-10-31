@@ -23,8 +23,8 @@ form.addEventListener("submit", function (e) {
 
     if (name.value.trim() === "") {
         report_input(name, "El nombre no puede ser un campo vacío");
-    } else if (name.value.trim().length < 2 || name.value.trim().length > 64) {
-        report_input(name, "El nombre debe tener entre 2 y 64 caracteres");
+    } else if (name.value.trim().length < 2 || name.value.trim().length > 32) {
+        report_input(name, "El nombre debe tener entre 2 y 32 caracteres");
     }
 
     if (email.value.trim() === "") {
@@ -34,7 +34,7 @@ form.addEventListener("submit", function (e) {
     }
 
     if (passwd.value == ""){
-        report_input(email, "La contraseña no puede ser un campo vacío");
+        report_input(passwd, "La contraseña no puede ser un campo vacío");
     }else if (passwd.value.length < 8 || passwd.value.length > 64) {
         report_input(passwd, "La contraseña debe tener entre 8 y 64 caracteres");
     }else if(!passwd.value.match(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).+$/)){
@@ -47,6 +47,7 @@ form.addEventListener("submit", function (e) {
 
     if (!form.checkValidity()) return;
 
+    // Modal
     document.getElementById("regModalName").textContent = name.value;
     document.getElementById("regModalEmail").textContent = email.value;
 

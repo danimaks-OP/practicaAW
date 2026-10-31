@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Contacto - Centro de Formación</title>
-    <meta name="description" content="Ponte en contacto con Centro de Formación. Consulta tus dudas, solicita información sobre nuestros cursos y recibe asistencia de nuestro equipo.">
+    <meta name="description"
+        content="Ponte en contacto con Centro de Formación. Consulta tus dudas, solicita información sobre nuestros cursos y recibe asistencia de nuestro equipo.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="./assets/logos/logo_32.png">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -43,7 +44,8 @@
                                 <li><a class="dropdown-item" href="./perfil.html">Mi perfil</a></li>
                                 <li><a class="dropdown-item" href="./matriculas.html">Mis matrículas</a></li>
                                 <li><a class="dropdown-item" href="./accesibilidad.html">Accesibilidad</a></li>
-                                <li><a class="dropdown-item" href="./contacto.html" aria-current="page">Contacto</a></li>
+                                <li><a class="dropdown-item" href="./contacto.html" aria-current="page">Contacto</a>
+                                </li>
                                 <li><a class="dropdown-item fw-bold logout" href="#">Cerrar sesión</a></li>
                             </ul>
                         </li>
@@ -59,13 +61,93 @@
                 <li class="breadcrumb-item active" aria-current="page">Contacto</li>
             </ol>
         </nav>
+        <section class="container-md">
+            <div class="text-center">
+                <h1 class="my-3">Estamos aquí para ayudarte</h1>
+                <p>Si tienes alguna duda, necesitas información sobre nuestros cursos o tienes algún problema con la
+                    plataforma, puedes ponerte en contacto con nuestro equipo a través del siguiente formulario.</p>
+                <p>En Centro de Formación queremos ofrecerte la mejor experiencia posible. Estaremos encantados de
+                    atender tus consultas, resolver tus dudas y ayudarte en todo lo que necesites.</p>
+            </div>
+            <form class="row g-3 my-5" id="contact_form">
+                <div class="col-md-6">
+                    <label class="form-label" for="u_name">Nombre <span class="text-danger">*</span></label>
+                    <input class="form-control" name="u_name" id="u_name" type="text" placeholder="John" minlength="2"
+                        maxlength="32" required>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="surname">Apellidos</label>
+                    <input class="form-control" name="surname" id="surname" type="text" placeholder="Doe" minlength="2"
+                        maxlength="32">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="u_email">Correo electrónico <span
+                            class="text-danger">*</span></label>
+                    <input class="form-control" name="u_email" id="u_email" type="email" placeholder="email@ejemplo.com"
+                        required>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="reason">Motivo de consulta <span class="text-danger">*</span></label>
+                    <select class="form-select" name="reason" id="reason">
+                        <option value="info">Solicitud de información</option>
+                        <option value="support">Soporte técnico</option>
+                        <option value="claim">Reclamaciones</option>
+                        <option value="suggestion">Sugerencias</option>
+                        <option value="other">Otros</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label" for="matter">Asunto <span class="text-danger">*</span></label>
+                    <input class="form-control" name="matter" id="matter" type="text"
+                        placeholder="Escriba aquí el asunto de su consulta" minlength="5" maxlength="128" required>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label" for="message">Mensaje <span class="text-danger">*</span></label>
+                    <textarea class="form-control" name="message" id="message" rows="6"
+                        placeholder="Escriba aquí su mensaje" maxlength="1000" required></textarea>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="col-12 text-end">
+                    <button class="btn px-4" type="submit">Enviar mensaje</button>
+                </div>
+            </form>
+        </section>
     </main>
     <footer class="d-flex flex-wrap justify-content-between">
         <p>Centro de formación y gestión académica</p>
         <p>&copy; 2026 Centro de Formación</p>
         <p>By Daniel Maksymiv &amp; Guillermo Patiño</p>
     </footer>
+
+    <!-- Modal contacto -->
+    <div class="modal" tabindex="-1" id="successContactModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Envío con éxito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li><strong>Nombre: </strong><span id="contactModalName"></span></li>
+                        <li><strong>Apellido: </strong><span id="contactModalSurname"></span></li>
+                        <li><strong>Email: </strong><span id="contactModalEmail"></span></li>
+                        <li><strong>Motivo: </strong><span id="contactModalReason"></span></li>
+                        <li><strong>Asunto: </strong><span id="contactModalMatter"></span></li>
+                        <li><strong>Mensaje: </strong><span id="contactModalMessage"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./js/contacto.js"></script>
 </body>
 
 </html>

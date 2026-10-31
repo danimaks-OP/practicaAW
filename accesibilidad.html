@@ -43,7 +43,8 @@
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="./perfil.html">Mi perfil</a></li>
                                 <li><a class="dropdown-item" href="./matriculas.html">Mis matrículas</a></li>
-                                <li><a class="dropdown-item" href="./accesibilidad.html" aria-current="page">Accesibilidad</a></li>
+                                <li><a class="dropdown-item" href="./accesibilidad.html"
+                                        aria-current="page">Accesibilidad</a></li>
                                 <li><a class="dropdown-item" href="./contacto.html">Contacto</a></li>
                                 <li><a class="dropdown-item fw-bold logout" href="#">Cerrar sesión</a></li>
                             </ul>
@@ -60,6 +61,49 @@
                 <li class="breadcrumb-item active" aria-current="page">Accesibilidad</li>
             </ol>
         </nav>
+        <section class="container-md text-center">
+            <h1 class="my-3">Accesibilidad</h1>
+            <p>En Centro de Formación trabajamos para garantizar que todas las personas puedan acceder a nuestros
+                contenidos, servicios y funcionalidades digitales en igualdad de condiciones, independientemente de sus
+                capacidades o circunstancias personales.</p>
+            <p>En esta página encontrarás información sobre nuestro compromiso con la accesibilidad, las medidas
+                adoptadas, el nivel de conformidad y los mecanismos disponibles para comunicar cualquier dificultad de
+                acceso o proponer mejoras.</p>
+            <p>Queremos construir un entorno digital inclusivo en el que todas las personas puedan aprender y
+                desarrollar sus habilidades sin barreras.</p>
+        </section>
+        <section class="container-md my-5">
+            <h2 class="text-center">Configurar accesibilidad</h2>
+            <form id="accesibilidad_form" aria-label="Ajuste sus preferencias de accesibilidad">
+                <fieldset class="my-4">
+                    <legend class="h5 my-3">Elegir tema de la interfaz</legend>
+                    <div class="form-check my-3">
+                        <input type="radio" class="form-check-input" value="light" name="theme" id="light" checked>
+                        <label for="light" class="form-check-label">Claro</label>
+                    </div>
+                    <div class="form-check my-3">
+                        <input type="radio" class="form-check-input" value="dark" name="theme" id="dark">
+                        <label for="dark" class="form-check-label">Oscuro</label>
+                    </div>
+                </fieldset>
+                <div>
+                    <h3 class="h5 my-3">Elegir contraste</h3>
+                    <div class="form-check form-switch">
+                        <input type="checkbox" class="form-check-input" role="switch" value="high_contrast" name="high_contrast" id="high_contrast">
+                        <label for="high_contrast" class="form-check-label">Alto contraste</label>
+                    </div>
+                </div>
+                <div class="my-4">
+                    <label for="font_size" class="h5 my-3">Elegir tamaño de fuente</label>
+                    <select class="form-select form-select-sm" name="font_size" id="font_size">
+                        <option value="small">Pequeño</option>
+                        <option value="medium" selected>Medio (predeterminado)</option>
+                        <option value="big">Grande</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn my-3">Guardar cambios</button>
+            </form>
+        </section>
     </main>
     <footer class="d-flex flex-wrap justify-content-between">
         <p>Centro de formación y gestión académica</p>
