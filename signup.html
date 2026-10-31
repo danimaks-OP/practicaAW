@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Estadísticas - Centro de Formación</title>
+    <title>Registro - Centro de Formación</title>
     <meta name="description"
-        content="Consulta las estadísticas del Centro de Formación y analiza los datos académicos sobre cursos, docentes, aulas y matrículas para conocer la actividad y evolución del centro.">
+        content="Regístrate en el Centro de Formación y crea tu cuenta para acceder a los cursos, consultar la información académica y gestionar tus matrículas desde una única plataforma.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="./assets/logos/logo_32.png">
     <link rel="stylesheet" href="./bootstrap/public/css/bootstrap.min.css">
@@ -13,7 +13,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <header class="navbar navbar-expand-xxl sticky-top">
+    <header class="navbar navbar-expand-md sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="./index.html">
                 <img src="./assets/logos/logo_64.png" alt="" width="64" height="64">
@@ -26,21 +26,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <nav aria-label="Navegación principal">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="./index.html" aria-current="page">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./cursos.html">Cursos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./docentes.html">Docentes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./aulas.html">Aulas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./matriculas.html">Mis matrículas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./matriculas.html">Usuarios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./index.html">Inicio</a></li>
                     </ul>
                 </nav>
                 <nav aria-label="Navegación para el usuario">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="./importar-datos.html">Importar datos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./estadísticas.html" aria-current="page">Estadísticas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./configuracion.html">Configuración</a></li>
-                        <li class="nav-item"><a class="nav-link text-decoration-underline fw-bold logout"
-                                href="#">Cerrar sesión</a>
+                        <li class="nav-item"><a class="nav-link btn log-btn" href="/login.html">Iniciar sesión</a></li>
+                        <li class="nav-item"><a class="nav-link btn register-btn" href="/signup.html" aria-current="page">Registrarse</a>
                         </li>
                     </ul>
                 </nav>
@@ -51,7 +43,7 @@
         <nav class="breadcrumb-bar" aria-label="Ruta de navegación">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="./index.html">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Estadísticas</li>
+                <li class="breadcrumb-item active" aria-current="page">Registro</li>
             </ol>
         </nav>
     </main>
