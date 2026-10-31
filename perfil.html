@@ -8,8 +8,8 @@
         content="Consulta y gestiona tu perfil en el Centro de Formación, revisa tus datos personales y actualiza la información de tu cuenta para mantenerla al día.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="./assets/logos/logo_32.png">
-    <link rel="stylesheet" href="./bootstrap/public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./stylesheets/estilos.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/estilos.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -25,20 +25,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <nav aria-label="Navegación principal">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav border-sep">
                         <li class="nav-item"><a class="nav-link" href="./index.html">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="./cursos.html">Cursos</a></li>
                         <li class="nav-item"><a class="nav-link" href="./docentes.html">Docentes</a></li>
                         <li class="nav-item"><a class="nav-link" href="./aulas.html">Aulas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./matriculas.html">Mis matrículas</a></li>
                     </ul>
                 </nav>
                 <nav aria-label="Navegación para el usuario">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="./accesibilidad.html">Accesibilidad</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./perfil.html" aria-current="page">Perfil</a></li>
-                        <li class="nav-item"><a class="nav-link text-decoration-underline fw-bold logout"
-                                href="#">Cerrar sesión</a>
+                        <li class="nav-item dropdown profile-menu">
+                            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="Perfil">
+                                <img src="./assets/icons/profile-circle.svg" alt="" class="profile-icon">
+                                <span class="d-xl-none">Perfil</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="./perfil.html" aria-current="page">Mi perfil</a></li>
+                                <li><a class="dropdown-item" href="./matriculas.html">Mis matrículas</a></li>
+                                <li><a class="dropdown-item" href="./accesibilidad.html">Accesibilidad</a></li>
+                                <li><a class="dropdown-item" href="./contacto.html">Contacto</a></li>
+                                <li><a class="dropdown-item fw-bold logout" href="#">Cerrar sesión</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -58,7 +66,7 @@
         <p>&copy; 2026 Centro de Formación</p>
         <p>By Daniel Maksymiv &amp; Guillermo Patiño</p>
     </footer>
-    <script src="./bootstrap/public/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

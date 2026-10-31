@@ -30,6 +30,13 @@ body {
     margin-right: 1.6rem;
 }
 
+/* Soluciona encaje con dispositivos muy estrechos */
+@media (max-width: 379px){
+    .navbar-brand {
+        margin-right: 0;
+    }
+}
+
 .navbar-brand img {
     height: 3rem;
     width: auto;
@@ -46,7 +53,7 @@ body {
     gap: 1rem;
 }
 
-.navbar .collapse:not(.show) li+li {
+.collapse:not(.show) .border-sep li+li {
     border-left: 1px solid rgba(255, 255, 255, 0.25);
     padding-left: 1rem;
 }
@@ -62,13 +69,82 @@ body {
     opacity: 0.85;
 }
 
-.logout {
+.navbar .profile-menu {
+    position: static;
+}
+
+.profile-menu .dropdown-toggle {
+    background: none;
+    border: none;
+    margin-right: 1rem ;
+}
+
+.profile-menu .dropdown-toggle::after {
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+    margin-left: 10px;
+}
+
+.profile-menu .dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+
+.profile-menu .profile-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+@media (min-width: 1200px) {
+    .profile-menu .profile-icon {
+        width: 2.2rem;
+        height: 2.2rem;
+        margin-right: 0;
+    }
+
+    .profile-menu .dropdown-toggle::after {
+        display: none;
+    }
+}
+
+.profile-menu .dropdown-menu {
+    top: 100%;
+    right: 0;
+    left: auto;
+    min-width: 13rem;
+    margin-top: 0;
+    padding: 0;
+    padding-bottom: 0.5rem;
+    background-color: var(--color-primary-dark);
+    border: 0;
+    border-radius: 0 0 0 8px;
+}
+
+.profile-menu .dropdown-item {
+    color: #ffffff;
+    padding: 0.8rem 1.5rem;
+}
+
+.profile-menu .dropdown-item:hover,
+.profile-menu .dropdown-item:focus,
+.profile-menu .dropdown-item:active {
+    color: #ffffff;
+    background-color: transparent;
+    opacity: 0.85;
+}
+
+.profile-menu .logout {
     color: #ff7c6b;
 }
 
-.logout:hover,
-.logout:focus {
+.profile-menu .logout:hover,
+.profile-menu .logout:focus {
     color: rgb(255, 47, 47);
+}
+
+.collapse:not(.show) .profile-menu .dropdown-menu li + li {
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .navbar-toggler {
@@ -95,6 +171,10 @@ body {
 
 .register-btn {
     background-color: var(--color-secondary);
+}
+
+.log-btn, .register-btn{
+    margin: 5px !important; 
 }
 
 .register-btn:hover {
@@ -224,7 +304,7 @@ h1 {
     color: #ffffff;
 }
 
-/* Necesario para mostrarse correctamente con bootstrap */
+/* Necesario para bootstrap */
 .accordion-button:not(.collapsed) {
     color: #ffffff;
     background-color: var(--color-primary-dark);
@@ -261,3 +341,4 @@ form .btn:focus {
     background-color: var(--color-secondary-light);
     color: white;
 }
+
