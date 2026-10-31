@@ -39,12 +39,14 @@
                                         <label for="login_email">Correo electrónico</label>
                                         <input type="email" name="login_email" id="login_email" placeholder="Introduzca su email de registro"
                                             class="form-control form-control-sm" required>
+                                        <div class="invalid-feedback"></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="login_passwd">Contraseña</label>
                                         <input type="password" name="login_passwd" id="login_passwd" placeholder="Introduzca su contraseña"
                                             class="form-control form-control-sm" minlength="8" maxlength="64"
                                             required>
+                                        <div class="invalid-feedback"></div>
                                     </div>
                                     <button type="submit" class="btn w-100">Entrar</button>
                                 </form>
@@ -72,20 +74,24 @@
                     <label for="reg_name">Nombre</label>
                     <input type="text" class="form-control" name="reg_name" id="reg_name" placeholder="John Doe" minlength="2"
                         maxlength="64" required>
+                    <div class="invalid-feedback"></div>
                 </div>
                 <div class="my-4">
                     <label for="reg_email">Correo electrónico</label>
                     <input type="email" name="reg_email" id="reg_email" class="form-control" placeholder="email@ejemplo.com" required>
+                    <div class="invalid-feedback"></div>
                 </div>
                 <div class="my-4">
                     <label for="reg_passwd">Contraseña</label>
                     <input type="password" name="reg_passwd" id="reg_passwd" minlength="8" maxlength="64" class="form-control"
                         placeholder="Escriba aquí su contraseña" required>
+                    <div class="invalid-feedback"></div>
                 </div>
                 <div class="my-4">
                     <label for="reg_conf_passwd">Confirmar contraseña</label>
                     <input type="password" name="reg_conf_passwd" id="reg_conf_passwd" class="form-control"
                         placeholder="Escriba aquí de nuevo su contraseña" required>
+                    <div class="invalid-feedback"></div>
                 </div>
                 <button type="submit" class="btn w-100 mt-3">Registrarse</button>
             </form>
@@ -133,8 +139,8 @@
     </div>
     
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="./js/registro.js"></script>
-    <script src="./js/login.js"></script>
+    <script type="module" src="./js/registro.js"></script>
+    <script type="module" src="./js/login.js"></script>
 </body>
 
 </html>
