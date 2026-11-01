@@ -93,7 +93,7 @@
                         placeholder="Escriba aquí su mensaje" maxlength="1000" required></textarea>
                     <div class="invalid-feedback"></div>
                 </div>
-                <div class="col-12 text-end">
+                <div class="text-end">
                     <button class="btn px-4" type="submit">Enviar mensaje</button>
                 </div>
             </form>
@@ -110,15 +110,18 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <p class="modal-title h5">Envío con éxito</p>
+                    <p class="modal-title h5">¡Mensaje enviado!</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <p>Tu mensaje ha sido enviado correctamente.</p>
+                    <p>Resumen de tu mensaje:</p>
                     <ul>
                         <li><strong>Motivo: </strong><span id="contactModalReason"></span></li>
                         <li><strong>Asunto: </strong><span id="contactModalMatter"></span></li>
                         <li><strong>Mensaje: </strong><span id="contactModalMessage"></span></li>
                     </ul>
+                    <p>¡Gracias por contactarnos!</p>
                 </div>
             </div>
         </div>

@@ -1,22 +1,21 @@
-let form = document.getElementById('register_form');
+const form = document.getElementById('register_form');
 
-let name = form['reg_name'];
-let email = form['reg_email'];
-let passwd = form['reg_passwd'];
-let passwd_conf = form['reg_conf_passwd'];
+const name = form['reg_name'];
+const email = form['reg_email'];
+const passwd = form['reg_passwd'];
+const passwd_conf = form['reg_conf_passwd'];
 
 function clear_validity(elem) {
-    elem.setCustomValidity("");
     elem.classList.remove('is-invalid');
+    elem.parentElement.querySelector('.invalid-feedback').textContent = "";
 }
 
 function report_input(input, error) {
-    input.setCustomValidity(error);
     input.classList.add('is-invalid');
-    input.nextElementSibling.textContent = error;
+    input.parentElement.querySelector('.invalid-feedback').textContent = error;
 }
 
-let inputs = [name, email, passwd, passwd_conf];
+const inputs = [name, email, passwd, passwd_conf];
 inputs.forEach((elem) => elem.addEventListener('input', () => clear_validity(elem)));
 passwd.addEventListener('input', () => clear_validity(passwd_conf));
 
@@ -47,7 +46,11 @@ form.addEventListener("submit", function (e) {
         report_input(passwd_conf, "Las contraseñas deben coincidir");
     }
 
-    if (!form.checkValidity()) return;
+    const firstError = form.querySelector('.is-invalid');
+    if (firstError) {
+        firstError.focus();
+        return;
+    }
 
     // Modal
     document.getElementById("regModalName").textContent = name.value;

@@ -1,18 +1,18 @@
-let form = document.getElementById("login_form");
+const form = document.getElementById("login_form");
 
-let email = form["login_email"];
-let passwd = form["login_passwd"];
+const email = form["login_email"];
+const passwd = form["login_passwd"];
 
-let inputs = [email, passwd];
+const inputs = [email, passwd];
 inputs.forEach((elem) => elem.addEventListener('input', () => {
-    elem.setCustomValidity("");
     elem.classList.remove('is-invalid');
+    elem.parentElement.querySelector('.invalid-feedback').textContent = "";
+    
 }));
 
 function report_input(input, error) {
-    input.setCustomValidity(error);
     input.classList.add('is-invalid');
-    input.nextElementSibling.textContent = error;
+    input.parentElement.querySelector('.invalid-feedback').textContent = error;
 }
 
 form.addEventListener("submit", function (e) {
@@ -30,7 +30,11 @@ form.addEventListener("submit", function (e) {
         report_input(passwd, "La contraseña debe tener entre 8 y 64 caracteres");
     }
 
-    if (!form.checkValidity()) return;
+    const firstError = form.querySelector('.is-invalid');
+    if (firstError) {
+        firstError.focus();
+        return;
+    }
 
     // Modal
     document.getElementById("loginModalEmail").textContent = email.value;

@@ -1,19 +1,18 @@
-let form = document.getElementById("contact_form");
+const form = document.getElementById("contact_form");
 
-let reason = form["reason"];
-let matter = form["matter"];
-let message = form["message"];
+const reason = form["reason"];
+const matter = form["matter"];
+const message = form["message"];
 
-let inputs = [reason, matter, message];
+const inputs = [reason, matter, message];
 inputs.forEach((elem) => elem.addEventListener('input', () => {
-    elem.setCustomValidity("");
     elem.classList.remove('is-invalid');
+    elem.parentElement.querySelector('.invalid-feedback').textContent = "";
 }));
 
 function report_input(input, error) {
-    input.setCustomValidity(error);
     input.classList.add('is-invalid');
-    input.nextElementSibling.textContent = error;
+    input.parentElement.querySelector('.invalid-feedback').textContent = error;
 }
 
 form.addEventListener("submit", function(e) {
@@ -31,7 +30,11 @@ form.addEventListener("submit", function(e) {
         report_input(message, "El mensaje no puede superar los 1000 caracteres");
     }
 
-    if(!form.checkValidity()) return;
+    const firstError = form.querySelector('.is-invalid');
+    if (firstError) {
+        firstError.focus();
+        return;
+    }
 
     // Modal
     document.getElementById("contactModalReason").textContent = reason.value;
