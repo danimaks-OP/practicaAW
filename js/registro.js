@@ -5,44 +5,46 @@ let email = form['reg_email'];
 let passwd = form['reg_passwd'];
 let passwd_conf = form['reg_conf_passwd'];
 
-let inputs = [name, email, passwd, passwd_conf];
-inputs.forEach((elem) => elem.addEventListener('input', () => {
+function clear_validity(elem) {
     elem.setCustomValidity("");
     elem.classList.remove('is-invalid');
-}));
+}
 
 function report_input(input, error) {
     input.setCustomValidity(error);
     input.classList.add('is-invalid');
     input.nextElementSibling.textContent = error;
-    input.reportValidity();
 }
+
+let inputs = [name, email, passwd, passwd_conf];
+inputs.forEach((elem) => elem.addEventListener('input', () => clear_validity(elem)));
+passwd.addEventListener('input', () => clear_validity(passwd_conf));
 
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    if (name.value.trim() === "") {
+    if (name.validity.valueMissing || name.value.trim() === "") {
         report_input(name, "El nombre no puede ser un campo vacío");
-    } else if (name.value.trim().length < 2 || name.value.trim().length > 32) {
-        report_input(name, "El nombre debe tener entre 2 y 32 caracteres");
+    } else if (name.validity.tooLong) {
+        report_input(name, "El nombre no puede tener más de 16 caracteres");
     }
 
-    if (email.value.trim() === "") {
+    if (email.validity.valueMissing) {
         report_input(email, "El correo electrónico no puede ser un campo vacío");
-    } else if (email.validity.typeMismatch) {
+    } else if (email.validity.typeMismatch || email.validity.patternMismatch) {
         report_input(email, "Formato de correo electrónico incorrecto");
     }
 
-    if (passwd.value == ""){
+    if (passwd.validity.valueMissing) {
         report_input(passwd, "La contraseña no puede ser un campo vacío");
-    }else if (passwd.value.length < 8 || passwd.value.length > 64) {
+    } else if (passwd.validity.tooShort || passwd.validity.tooLong) {
         report_input(passwd, "La contraseña debe tener entre 8 y 64 caracteres");
-    }else if(!passwd.value.match(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).+$/)){
-        report_input(passwd, "La contraseña debe contener letras, numeros y al menos un caracter especial");
+    } else if (passwd.validity.patternMismatch) {
+        report_input(passwd, "La contraseña debe contener letras, números y al menos un caracter especial");
     }
 
     if (passwd.value !== passwd_conf.value) {
-        report_input(passwd_conf, "Las contaseñas deben de coincidir");
+        report_input(passwd_conf, "Las contraseñas deben coincidir");
     }
 
     if (!form.checkValidity()) return;

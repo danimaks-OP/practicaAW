@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <nav aria-label="Navegación principal">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="./index.html" aria-current="page">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./index.html">Inicio</a></li>
                     </ul>
                 </nav>
                 <nav aria-label="Navegación para el usuario">
@@ -34,25 +34,27 @@
                         <li class="nav-item dropdown">
                             <p class="nav-link btn log-btn m-0" tabindex="0">Iniciar sesión</p>
                             <div class="dropdown-menu dropdown-element p-3">
-                                <form aria-label="Iniciar sesión" id="login_form">
+                                <form aria-label="Iniciar sesión" id="login_form" novalidate>
                                     <div class="mb-2">
                                         <label for="login_email">Correo electrónico</label>
-                                        <input type="email" name="login_email" id="login_email" placeholder="Introduzca su email de registro"
-                                            class="form-control form-control-sm" required>
+                                        <input type="email" name="login_email" id="login_email"
+                                            placeholder="Introduzca su email de registro"
+                                            pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" class="form-control form-control-sm"
+                                            required>
                                         <div class="invalid-feedback"></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="login_passwd">Contraseña</label>
-                                        <input type="password" name="login_passwd" id="login_passwd" placeholder="Introduzca su contraseña"
-                                            class="form-control form-control-sm" minlength="8" maxlength="64"
-                                            required>
+                                        <input type="password" name="login_passwd" id="login_passwd"
+                                            placeholder="Introduzca su contraseña" class="form-control form-control-sm"
+                                            minlength="8" maxlength="64" required>
                                         <div class="invalid-feedback"></div>
                                     </div>
                                     <button type="submit" class="btn w-100">Entrar</button>
                                 </form>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link btn register-btn" href="/registro.html"
+                        <li class="nav-item"><a class="nav-link btn register-btn" href="./registro.html"
                                 aria-current="page">Registrarse</a>
                         </li>
                     </ul>
@@ -69,31 +71,37 @@
         </nav>
         <section class="container-md">
             <h1 class="text-center mt-5">Crear una cuenta nueva</h1>
-            <form class="mt-5" id="register_form" aria-label="Registrarse" >
+            <form class="mt-5" id="register_form" aria-label="Registrarse" novalidate>
                 <div class="my-4">
-                    <label for="reg_name">Nombre</label>
-                    <input type="text" class="form-control" name="reg_name" id="reg_name" placeholder="John Doe" minlength="2"
-                        maxlength="32" required>
+                    <label class="form-label" for="reg_name">Nombre <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="reg_name" id="reg_name" placeholder="John Doe"
+                        maxlength="16" required>
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="my-4">
-                    <label for="reg_email">Correo electrónico</label>
-                    <input type="email" name="reg_email" id="reg_email" class="form-control" placeholder="email@ejemplo.com" required>
+                    <label class="form-label" for="reg_email">Correo electrónico <span
+                            class="text-danger">*</span></label>
+                    <input type="email" name="reg_email" id="reg_email" class="form-control"
+                        placeholder="email@ejemplo.com" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" required>
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="my-4">
-                    <label for="reg_passwd">Contraseña</label>
-                    <input type="password" name="reg_passwd" id="reg_passwd" minlength="8" maxlength="64" class="form-control"
-                        placeholder="Escriba aquí su contraseña" required>
+                    <label class="form-label" for="reg_passwd">Contraseña <span class="text-danger">*</span></label>
+                    <input type="password" name="reg_passwd" id="reg_passwd" minlength="8" maxlength="64"
+                        class="form-control" placeholder="Escriba aquí su contraseña"
+                        pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).+$" required>
                     <div class="invalid-feedback"></div>
+                    <span class="form-text">(Debe contener al menos 8 caracteres e incluir una letra, un número y un
+                        carácter especial)</span>
                 </div>
                 <div class="my-4">
-                    <label for="reg_conf_passwd">Confirmar contraseña</label>
+                    <label class="form-label" for="reg_conf_passwd">Confirmar contraseña <span
+                            class="text-danger">*</span></label>
                     <input type="password" name="reg_conf_passwd" id="reg_conf_passwd" class="form-control"
-                        placeholder="Escriba aquí de nuevo su contraseña" required>
+                        placeholder="Escriba de nuevo aquí su contraseña" required>
                     <div class="invalid-feedback"></div>
                 </div>
-                <button type="submit" class="btn w-100 mt-3">Registrarse</button>
+                <button type="submit" class="btn w-100 my-3">Registrarse</button>
             </form>
         </section>
     </main>
@@ -108,7 +116,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Envío con éxito</h5>
+                    <p class="modal-title h5">Envío con éxito</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -126,7 +134,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Inicio de sesión enviado</h5>
+                    <p class="modal-title h5">Inicio de sesión enviado</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -137,7 +145,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script type="module" src="./js/registro.js"></script>
     <script type="module" src="./js/login.js"></script>

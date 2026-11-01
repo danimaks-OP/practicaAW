@@ -69,30 +69,11 @@
                 <p>En Centro de Formación queremos ofrecerte la mejor experiencia posible. Estaremos encantados de
                     atender tus consultas, resolver tus dudas y ayudarte en todo lo que necesites.</p>
             </div>
-            <form class="row g-3 my-5" id="contact_form">
-                <div class="col-md-6">
-                    <label class="form-label" for="u_name">Nombre <span class="text-danger">*</span></label>
-                    <input class="form-control" name="u_name" id="u_name" type="text" placeholder="John" minlength="2"
-                        maxlength="32" required>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label" for="surname">Apellidos</label>
-                    <input class="form-control" name="surname" id="surname" type="text" placeholder="Doe" minlength="2"
-                        maxlength="32">
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label" for="u_email">Correo electrónico <span
-                            class="text-danger">*</span></label>
-                    <input class="form-control" name="u_email" id="u_email" type="email" placeholder="email@ejemplo.com"
-                        required>
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="col-md-6">
+            <form class="row g-3 my-5" id="contact_form" novalidate>
+                <div>
                     <label class="form-label" for="reason">Motivo de consulta <span class="text-danger">*</span></label>
                     <select class="form-select" name="reason" id="reason">
-                        <option value="info">Solicitud de información</option>
+                        <option value="info" selected>Solicitud de información</option>
                         <option value="support">Soporte técnico</option>
                         <option value="claim">Reclamaciones</option>
                         <option value="suggestion">Sugerencias</option>
@@ -100,13 +81,13 @@
                     </select>
                     <div class="invalid-feedback"></div>
                 </div>
-                <div class="col-12">
+                <div>
                     <label class="form-label" for="matter">Asunto <span class="text-danger">*</span></label>
                     <input class="form-control" name="matter" id="matter" type="text"
-                        placeholder="Escriba aquí el asunto de su consulta" minlength="5" maxlength="128" required>
+                        placeholder="Escriba aquí el asunto de su consulta" maxlength="128" required>
                     <div class="invalid-feedback"></div>
                 </div>
-                <div class="col-12">
+                <div>
                     <label class="form-label" for="message">Mensaje <span class="text-danger">*</span></label>
                     <textarea class="form-control" name="message" id="message" rows="6"
                         placeholder="Escriba aquí su mensaje" maxlength="1000" required></textarea>
@@ -129,14 +110,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Envío con éxito</h5>
+                    <p class="modal-title h5">Envío con éxito</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <ul>
-                        <li><strong>Nombre: </strong><span id="contactModalName"></span></li>
-                        <li><strong>Apellido: </strong><span id="contactModalSurname"></span></li>
-                        <li><strong>Email: </strong><span id="contactModalEmail"></span></li>
                         <li><strong>Motivo: </strong><span id="contactModalReason"></span></li>
                         <li><strong>Asunto: </strong><span id="contactModalMatter"></span></li>
                         <li><strong>Mensaje: </strong><span id="contactModalMessage"></span></li>

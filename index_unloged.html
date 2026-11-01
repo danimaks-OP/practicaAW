@@ -34,12 +34,13 @@
                         <li class="nav-item dropdown">
                             <p class="nav-link btn log-btn m-0" tabindex="0">Iniciar sesión</p>
                             <div class="dropdown-menu dropdown-element p-3">
-                                <form aria-label="Iniciar sesión" id="login_form">
+                                <form aria-label="Iniciar sesión" id="login_form" novalidate>
                                     <div class="mb-2">
                                         <label for="login_email">Correo electrónico</label>
                                         <input type="email" name="login_email" id="login_email"
                                             placeholder="Introduzca su email de registro"
-                                            class="form-control form-control-sm" required>
+                                            pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" class="form-control form-control-sm"
+                                            required>
                                         <div class="invalid-feedback"></div>
                                     </div>
                                     <div class="mb-3">
@@ -53,7 +54,8 @@
                                 </form>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link btn register-btn" href="/registro.html">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link btn register-btn" href="./registro.html">Registrarse</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -234,7 +236,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Inicio de sesión enviado</h5>
+                    <p class="modal-title h5">Inicio de sesión enviado</p>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
