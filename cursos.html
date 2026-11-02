@@ -63,11 +63,25 @@
         </nav>
         <div class="container">
             <h1 class="text-center my-3">Portal de cursos</h1>
-            <div class="input-group mt-5">
-                <label class="input-group-text" for="search_course">Filtrar <img src="./assets/icons/filter.svg"
-                        class="ms-2"></label>
-                <input class="form-control" id="search_course" name="search_course" type="search"
-                    placeholder="Nombre del curso" aria-controls="courses_tab">
+            <div class="row g-2 mt-5">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <label class="input-group-text" for="search_course">Filtrar <img src="./assets/icons/filter.svg"
+                                alt="" class="ms-2"></label>
+                        <input class="form-control" id="search_course" name="search_course" type="search"
+                            placeholder="Nombre del curso" aria-controls="courses_tab">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <label class="input-group-text" for="filter_courses">Mostrar</label>
+                        <select class="form-select" id="filter_courses" name="filter_courses"
+                            aria-controls="courses_tab">
+                            <option value="none" selected>Todos los cursos</option>
+                            <option value="full">Solo con plazas libres</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="table-responsive my-3">
                 <div class="text-end">

@@ -22,41 +22,49 @@ let courses = [
     }
 ]
 
+function deleteCourse(id) {
+    const index = courses.findIndex((elem) => elem.id === id);
+    courses.splice(index, 1);
+    try {
+        localStorage.setItem("courses", JSON.stringify(courses));
+    } catch (e) {
+        console.warn("No se pudieron guardar los cursos en localStorage: ", e);
+    }
+    drawTable(courses);
+}
+
+function addDeleteButton(tr, coursesArray, c) {
+    const btn = document.createElement("button");
+    btn.textContent = "Eliminar";
+    btn.classList.add("btn", "btn-danger");
+    btn.addEventListener("click", () => deleteCourse(coursesArray[c].id));
+    const td_btn = document.createElement("td");
+    td_btn.append(btn);
+    tr.append(td_btn);
+}
+
 const coursesTable = document.getElementById("courses_tab");
 const nCourses = document.getElementById("n_courses");
-
-function addDeleteButton(tr, coursesArray, c){
-    const btn = document.createElement("button");
-        btn.textContent = "Eliminar";
-        btn.classList.add("btn", "btn-danger");
-        btn.addEventListener("click", function () {
-            const index = courses.findIndex((elem) => elem.id === coursesArray[c].id);
-            courses.splice(index, 1);
-            drawTable(courses);
-        });
-        const td_btn = document.createElement("td");
-        td_btn.append(btn);
-        tr.append(td_btn);
-}
 
 function drawTable(coursesArray) {
     const frag = document.createDocumentFragment();
 
+    const filter = localStorage.getItem("filter") ? localStorage.getItem("filter") : "none";
+
     for (const c in coursesArray) {
+        if(filter === "full" && coursesArray[c].places === 0) continue;
         const tr = document.createElement("tr");
         for (const k in coursesArray[c]) {
             const td = document.createElement("td");
-            if(k === "places" && coursesArray[c][k] === 0) {
+            if (k === "places" && coursesArray[c][k] === 0) {
                 td.textContent = "Completo";
                 tr.classList.add("table-danger");
-            }else{
+            } else {
                 td.textContent = coursesArray[c][k];
             }
             tr.append(td);
         }
-        
         addDeleteButton(tr, coursesArray, c);
-
         frag.append(tr);
     }
 
@@ -64,17 +72,47 @@ function drawTable(coursesArray) {
     nCourses.textContent = coursesArray.length;
 }
 
+
+// Inicializacion
+
+const savedCourses = localStorage.getItem("courses");
+courses = savedCourses ? JSON.parse(savedCourses) : courses;
 drawTable(courses);
+
+
+// Filtrar nombre de cursos
+
+const search = document.getElementById("search_course");
+
+function filterByName(searchValue) {
+    const val = searchValue.trim().toLowerCase();
+    const filteredCourses = courses.filter((c) => c.name.toLowerCase().includes(val));
+    try {
+        sessionStorage.setItem("search", searchValue);
+    }catch(err){
+        console.warn("No se pudo guardar la búsqueda en sessionStorage: ", err);
+    }
+    drawTable(filteredCourses);
+}
+
+search.addEventListener("input", () => filterByName(search.value));
+
+search.value = sessionStorage.getItem("search") ? sessionStorage.getItem("search") : "";
+filterByName(search.value);
 
 
 // Filtrar cursos
 
-const search = document.getElementById("search_course");
+const filter_courses = document.getElementById("filter_courses");
+filter_courses.value = localStorage.getItem("filter") ? localStorage.getItem("filter") : "none";
 
-search.addEventListener("input", function () {
-    const val = search.value.trim().toLowerCase();
-    const filteredCourses = courses.filter((c) => c.name.toLowerCase().includes(val));
-    drawTable(filteredCourses);
+filter_courses.addEventListener("change", function(e){
+    try {
+        localStorage.setItem("filter", filter_courses.value);
+    }catch(err){
+        console.warn("No se pudo guardar el filtro en localStorage: ", err);
+    }
+    drawTable(courses);
 });
 
 
@@ -112,6 +150,13 @@ form.addEventListener("submit", function (e) {
     };
 
     courses.push(course);
+
+    try {
+        localStorage.setItem("courses", JSON.stringify(courses));
+    } catch (e) {
+        console.warn("No se pudieron guardar los cursos en localStorage: ", e);
+    }
+
     drawTable(courses);
 
     form.reset();
