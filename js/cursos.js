@@ -55,10 +55,10 @@ function drawTable() {
 
     const f = filter_name.trim().toLowerCase();
     const filteredCourses = courses.filter((c) => c.name.toLowerCase().includes(f));
-    
+
     let count = 0;
     for (const c in filteredCourses) {
-        if(filter_type === "full" && filteredCourses[c].places === 0) 
+        if (filter_type === "full" && filteredCourses[c].places === 0)
             continue;
         const tr = document.createElement("tr");
         for (const k in filteredCourses[c]) {
@@ -85,7 +85,19 @@ function drawTable() {
 // Inicializacion cursos
 
 const savedCourses = localStorage.getItem("courses");
-courses = savedCourses ? JSON.parse(savedCourses) : courses;
+if (savedCourses) {
+    try {
+        const parsed = JSON.parse(savedCourses);
+        if (parsed.every((c) => Number.isInteger(c.id) && c.name && c.category && Number.isInteger(c.duration) && Number.isInteger(c.places))) {
+            courses = parsed;
+        } else {
+            throw new Error("Formato de curso incorrecto");
+        }
+    } catch (e) {
+        console.warn("JSON de cursos guardados incorrecto, se usan los cursos por defecto: ", e);
+        localStorage.removeItem("courses");
+    }
+}
 
 
 // Filtrar nombre de cursos
@@ -93,11 +105,11 @@ courses = savedCourses ? JSON.parse(savedCourses) : courses;
 const search = document.getElementById("search_course");
 search.value = sessionStorage.getItem("filter_name") ? sessionStorage.getItem("filter_name") : "";
 
-search.addEventListener("input", function(){
+search.addEventListener("input", function () {
     filter_name = search.value;
     try {
         sessionStorage.setItem("filter_name", search.value);
-    }catch(err){
+    } catch (err) {
         console.warn("No se pudo guardar la búsqueda en sessionStorage: ", err);
     }
     drawTable();
@@ -109,11 +121,11 @@ search.addEventListener("input", function(){
 const select_courses = document.getElementById("filter_courses");
 select_courses.value = localStorage.getItem("filter_type") ? localStorage.getItem("filter_type") : "";
 
-select_courses.addEventListener("change", function(){
+select_courses.addEventListener("change", function () {
     filter_type = select_courses.value;
     try {
         localStorage.setItem("filter_type", select_courses.value);
-    }catch(err){
+    } catch (err) {
         console.warn("No se pudo guardar el filtro en localStorage: ", err);
     }
     drawTable();

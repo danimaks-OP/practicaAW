@@ -25,7 +25,7 @@ form.addEventListener("submit", function (e) {
     if (name.validity.valueMissing || name.value.trim() === "") {
         report_input(name, "El nombre no puede ser un campo vacío");
     } else if (name.validity.tooLong) {
-        report_input(name, "El nombre no puede tener más de 16 caracteres");
+        report_input(name, "El nombre no puede tener más de 32 caracteres");
     }
 
     if (email.validity.valueMissing) {
