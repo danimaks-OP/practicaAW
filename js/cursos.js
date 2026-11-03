@@ -30,90 +30,99 @@ function deleteCourse(id) {
     } catch (e) {
         console.warn("No se pudieron guardar los cursos en localStorage: ", e);
     }
-    drawTable(courses);
+    drawTable();
 }
 
-function addDeleteButton(tr, coursesArray, c) {
+function createDeleteButton(courseId) {
     const btn = document.createElement("button");
     btn.textContent = "Eliminar";
     btn.classList.add("btn", "btn-danger");
-    btn.addEventListener("click", () => deleteCourse(coursesArray[c].id));
+    btn.addEventListener("click", () => deleteCourse(courseId));
     const td_btn = document.createElement("td");
     td_btn.append(btn);
-    tr.append(td_btn);
+    return td_btn;
 }
 
 const coursesTable = document.getElementById("courses_tab");
 const nCourses = document.getElementById("n_courses");
 
-function drawTable(coursesArray) {
+// Elegimos que el tipo de filtro se mantenga en local y la busqueda por nombre sea por sesion
+let filter_name = sessionStorage.getItem("filter_name") ? sessionStorage.getItem("filter_name") : "";
+let filter_type = localStorage.getItem("filter_type") ? localStorage.getItem("filter_type") : "";
+
+function drawTable() {
     const frag = document.createDocumentFragment();
 
-    const filter = localStorage.getItem("filter") ? localStorage.getItem("filter") : "none";
-
-    for (const c in coursesArray) {
-        if(filter === "full" && coursesArray[c].places === 0) continue;
+    const f = filter_name.trim().toLowerCase();
+    const filteredCourses = courses.filter((c) => c.name.toLowerCase().includes(f));
+    
+    let count = 0;
+    for (const c in filteredCourses) {
+        if(filter_type === "full" && filteredCourses[c].places === 0) 
+            continue;
         const tr = document.createElement("tr");
-        for (const k in coursesArray[c]) {
+        for (const k in filteredCourses[c]) {
             const td = document.createElement("td");
-            if (k === "places" && coursesArray[c][k] === 0) {
+            if (k === "places" && filteredCourses[c][k] === 0) {
                 td.textContent = "Completo";
                 tr.classList.add("table-danger");
             } else {
-                td.textContent = coursesArray[c][k];
+                td.textContent = filteredCourses[c][k];
             }
             tr.append(td);
         }
-        addDeleteButton(tr, coursesArray, c);
+        let td_btn = createDeleteButton(filteredCourses[c].id);
+        tr.append(td_btn);
         frag.append(tr);
+        count++;
     }
 
     coursesTable.replaceChildren(frag);
-    nCourses.textContent = coursesArray.length;
+    nCourses.textContent = count;
 }
 
 
-// Inicializacion
+// Inicializacion cursos
 
 const savedCourses = localStorage.getItem("courses");
 courses = savedCourses ? JSON.parse(savedCourses) : courses;
-drawTable(courses);
 
 
 // Filtrar nombre de cursos
 
 const search = document.getElementById("search_course");
+search.value = sessionStorage.getItem("filter_name") ? sessionStorage.getItem("filter_name") : "";
 
-function filterByName(searchValue) {
-    const val = searchValue.trim().toLowerCase();
-    const filteredCourses = courses.filter((c) => c.name.toLowerCase().includes(val));
+search.addEventListener("input", function(){
+    filter_name = search.value;
     try {
-        sessionStorage.setItem("search", searchValue);
+        sessionStorage.setItem("filter_name", search.value);
     }catch(err){
         console.warn("No se pudo guardar la búsqueda en sessionStorage: ", err);
     }
-    drawTable(filteredCourses);
-}
-
-search.addEventListener("input", () => filterByName(search.value));
-
-search.value = sessionStorage.getItem("search") ? sessionStorage.getItem("search") : "";
-filterByName(search.value);
+    drawTable();
+});
 
 
 // Filtrar cursos
 
-const filter_courses = document.getElementById("filter_courses");
-filter_courses.value = localStorage.getItem("filter") ? localStorage.getItem("filter") : "none";
+const select_courses = document.getElementById("filter_courses");
+select_courses.value = localStorage.getItem("filter_type") ? localStorage.getItem("filter_type") : "";
 
-filter_courses.addEventListener("change", function(e){
+select_courses.addEventListener("change", function(){
+    filter_type = select_courses.value;
     try {
-        localStorage.setItem("filter", filter_courses.value);
+        localStorage.setItem("filter_type", select_courses.value);
     }catch(err){
         console.warn("No se pudo guardar el filtro en localStorage: ", err);
     }
-    drawTable(courses);
+    drawTable();
 });
+
+
+// Dibujar tabla inicial
+
+drawTable();
 
 
 // Formulario añadir cursos
