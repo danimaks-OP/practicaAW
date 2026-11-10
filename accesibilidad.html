@@ -74,8 +74,8 @@
         </section>
         <section class="container-md my-5">
             <h2 class="text-center">Configurar accesibilidad</h2>
-            <form id="accesibilidad_form" aria-label="Ajuste sus preferencias de accesibilidad">
-                <fieldset class="my-4">
+  
+                <fieldset class="my-3">
                     <legend class="h5 my-3">Elegir tema de la interfaz</legend>
                     <div class="form-check my-3">
                         <input type="radio" class="form-check-input" value="light" name="theme" id="light" checked>
@@ -86,7 +86,7 @@
                         <label for="dark" class="form-check-label">Oscuro</label>
                     </div>
                 </fieldset>
-                <div>
+                <div class="my-4">
                     <h3 class="h5 my-3">Elegir contraste</h3>
                     <div class="form-check form-switch">
                         <input type="checkbox" class="form-check-input" role="switch" value="high_contrast" name="high_contrast" id="high_contrast">
@@ -101,8 +101,7 @@
                         <option value="big">Grande</option>
                     </select>
                 </div>
-                <button type="submit" class="btn my-3">Guardar cambios</button>
-            </form>
+
         </section>
     </main>
     <footer class="d-flex flex-wrap justify-content-between">
@@ -111,6 +110,24 @@
         <p>By Daniel Maksymiv &amp; Guillermo Patiño</p>
     </footer>
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./js/accesibilidad.js"></script>
+    <script>
+        const theme = localStorage.getItem("theme");
+        const contrast = localStorage.getItem("contrast");
+        const fontSize = localStorage.getItem("fontsize");
+        
+        if(theme === "dark")
+            document.documentElement.classList.add("dark-theme");
+
+        if(contrast === "high")
+            document.documentElement.classList.add("high-contrast");
+
+        if(fontSize === "big"){
+            document.documentElement.classList.add("big-fontsize")
+        }else if(fontSize === "small"){
+            document.documentElement.classList.add("small-fontsize")
+        }
+    </script>
 </body>
 
 </html>

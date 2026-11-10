@@ -9,6 +9,191 @@
     --shadow: rgba(0, 0, 0, 0.15);
 }
 
+/**** Tema negro ****/
+.dark-theme {
+    --color-bg: #121b26;
+    --color-bg-soft: #0f1722;
+    --color-primary: #05111c;
+    --color-primary-dark: #0e151e;
+    --color-text: #ffbc50;
+}
+
+.dark-theme h1,
+.dark-theme .incentive,
+.dark-theme .breadcrumb a {
+    color: var(--color-accent);
+}
+
+.dark-theme .program-highlights>ul {
+    background-color: rgba(7, 18, 30, 0.8);
+}
+
+.dark-theme .breadcrumb a:hover,
+.dark-theme .breadcrumb a:focus {
+    color: var(--color-secondary-light);
+}
+
+.dark-theme form .btn,
+.dark-theme form .btn:hover,
+.dark-theme form .btn:focus,
+.dark-theme .register-btn {
+    color: #1a1206;
+}
+/********************/
+
+
+/** Alto contraste **/
+.high-contrast:not(.dark-theme) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.high-contrast:not(.dark-theme) main,
+.high-contrast:not(.dark-theme) h1,
+.high-contrast:not(.dark-theme) .incentive {
+    color: #000000;
+}
+
+.high-contrast:not(.dark-theme) main a {
+    color: #0000cc;
+    text-decoration: underline;
+}
+
+.high-contrast:not(.dark-theme) .navbar,
+.high-contrast:not(.dark-theme) footer,
+.high-contrast:not(.dark-theme) .profile-menu .dropdown-menu {
+    background-color: #000000;
+}
+
+.high-contrast:not(.dark-theme) .breadcrumb-bar {
+    background-color: #ffffff;
+    border-bottom: 2px solid #000000;
+}
+
+.high-contrast:not(.dark-theme) .btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #000000;
+}
+
+.high-contrast:not(.dark-theme) .btn:hover,
+.high-contrast:not(.dark-theme) .btn:focus {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.high-contrast:not(.dark-theme) .accordion-button {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.high-contrast:not(.dark-theme) .accordion-body {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+}
+
+.high-contrast.dark-theme {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.high-contrast.dark-theme main,
+.high-contrast.dark-theme h1,
+.high-contrast.dark-theme .incentive {
+    color: #ffffff;
+}
+
+.high-contrast.dark-theme main a {
+    color: #ffff00;
+    text-decoration: underline;
+}
+
+.high-contrast.dark-theme .navbar,
+.high-contrast.dark-theme footer,
+.high-contrast.dark-theme .profile-menu .dropdown-menu {
+    background-color: #000000;
+    border-color: #ffffff;
+}
+
+.high-contrast.dark-theme .navbar {
+    border-bottom: 2px solid #ffffff;
+}
+
+.high-contrast.dark-theme footer {
+    border-top: 2px solid #ffffff;
+}
+
+.high-contrast.dark-theme .breadcrumb-bar {
+    background-color: #000000;
+    border-bottom: 2px solid #ffffff;
+}
+
+.high-contrast.dark-theme .btn {
+    background-color: #000000;
+    color: #ffff00;
+    border: 2px solid #ffff00;
+}
+
+.high-contrast.dark-theme .btn:hover,
+.high-contrast.dark-theme .btn:focus {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.high-contrast.dark-theme .accordion-button,
+.high-contrast.dark-theme .accordion-body {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.high-contrast .nav-link:hover,
+.high-contrast .nav-link:focus {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.high-contrast :focus-visible {
+    outline: 3px solid #000000;
+    box-shadow: 0 0 0 6px #ffffff;
+}
+/********************/
+
+
+/** Tamaño fuente **/
+html.big-fontsize   { font-size: 112.5%; }
+html.small-fontsize { font-size: 87.5%; }
+
+html.big-fontsize body {
+    overflow-wrap: break-word;
+}
+
+html.big-fontsize .carousel-inner {
+    height: 35.5rem;
+}
+
+html.big-fontsize .dropdown-element {
+    width: min(18rem, calc(100vw - 2rem));
+}
+
+@media (max-width: 575px) {
+    html.big-fontsize .navbar-brand .brand-name {
+        font-size: 1.2rem;
+    }
+
+    html.big-fontsize .program-highlights h3,
+    html.big-fontsize .carousel-caption h3 {
+        font-size: 1.6rem;
+    }
+}
+
+html.small-fontsize footer p {
+    font-size: 0.875rem;
+}
+/********************/
+
+
 body {
     background-color: var(--color-bg);
 }

@@ -245,9 +245,26 @@
             </div>
         </div>
     </div>
-
+    
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script type="module" src="./js/login.js"></script>
+    <script>
+        const theme = localStorage.getItem("theme");
+        const contrast = localStorage.getItem("contrast");
+        const fontSize = localStorage.getItem("fontsize");
+        
+        if(theme === "dark")
+            document.documentElement.classList.add("dark-theme");
+
+        if(contrast === "high")
+            document.documentElement.classList.add("high-contrast");
+
+        if(fontSize === "big"){
+            document.documentElement.classList.add("big-fontsize")
+        }else if(fontSize === "small"){
+            document.documentElement.classList.add("small-fontsize")
+        }
+    </script>
 </body>
 
 </html>
