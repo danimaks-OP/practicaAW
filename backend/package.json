@@ -1,0 +1,14 @@
+{
+  "name": "centro-formacion-backend",
+  "version": "1.0.0",
+  "description": "Backend de la aplicación Centro de Formación",
+  "license": "ISC",
+  "author": "Daniel Maksymiv & Guillermo Patiño",
+  "type": "commonjs",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
