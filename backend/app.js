@@ -9,13 +9,6 @@ import * as courses from "./modules/courses.js";
 // import.meta.dirname = carpeta de este fichero -> asi funciona se ejecute donde se ejecute
 const dataFile = join(import.meta.dirname, "data", "courses.json");
 
-/* Posición	     Contenido con node app.js ingl
-     [0]	       Ruta del ejecutable de Node
-     [1]	             Ruta de app.js
-     [2]	              ej: "ingl"
-*/
-const search = process.argv[2]; // Se lee el argumento [2] de la terminal 
-
 //Texto a mostrar
 console.log("Centro de Formación - backend");
 console.log(`Node.js ${process.version} en ${platform()} (${hostname()})`);
@@ -35,6 +28,13 @@ if (!courses.isValidCatalog(catalog)) {
     console.error("El fichero de cursos no tiene el formato esperado");
     process.exit(1);
 }
+
+/* Posición	     Contenido con node app.js ingl
+     [0]	       Ruta del ejecutable de Node
+     [1]	             Ruta de app.js
+     [2]	              ej: "ingl"
+*/
+const search = process.argv[2]; // Se lee el argumento [2] de la terminal 
 
 /*Si se pasó un texto de búsqueda, shown son los cursos filtrados.
   Si no (search es undefined, que cuenta como falso), son todos.*/
