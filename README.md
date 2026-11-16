@@ -32,3 +32,4 @@ npm start
 ```
 
 También se puede ejecutar con `node app.js`, o filtrar cursos por nombre con `node app.js ingl`.
+En desarrollo, `npm run dev` reinicia el programa automáticamente al guardar cambios.
