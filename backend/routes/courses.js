@@ -1,5 +1,3 @@
-"use strict"
-
 import express from "express";
 import * as courses from "../modules/courses.js";
 
@@ -27,7 +25,7 @@ function createCoursesRouter(catalog){
         const id = Number(req.params.id);
         const course = catalog.find((c) => c.id === id);
         if(!course){
-            return res.status(404).json({error: `No existe ningún curso con id &{req.params.id}`});
+            return res.status(404).json({error: `No existe ningún curso con id ${req.params.id}`});
         }
         res.json(course);
     });
@@ -35,7 +33,7 @@ function createCoursesRouter(catalog){
     // POST /api/cursos -> crea un curso con los datos del cuerpo (JSON)
     router.post("/", (req, res) => {
         const errors = courses.validateCourseData(req.body);
-        if(errrors.length > 0){
+        if(errors.length > 0){
             return res.status(400).json({errores: errors});
         }
 

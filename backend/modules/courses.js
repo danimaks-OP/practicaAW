@@ -13,7 +13,7 @@ function isValidCatalog(data){ // para todo el array de cursos, ver que todos lo
 
 //Devuelve un array con los errores encontrados
 function validateCourseData(data){
-    if(data === null || typeof data !== object || Array.isArray(data)){
+    if(data === null || typeof data !== "object" || Array.isArray(data)){
         return ["El cuerpo de la petición debe ser un objeto JSON"];
     }
     const errors = [];
@@ -29,6 +29,7 @@ function validateCourseData(data){
     if(!Number.isInteger(data.places) || data.places < 0){
         errors.push("places debe ser un número entero mayor o igual que 0")
     }
+    return errors;
 }
 
 // Id mayor + 1 (si no hay cursos, 1)
