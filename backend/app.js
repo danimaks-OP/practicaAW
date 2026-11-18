@@ -5,6 +5,7 @@ import { join, basename } from "node:path"; // Manejo de rutas de ficheros
 import { platform, hostname } from "node:os"; // Info. del SO
 // Módulo propio (con ES modules la extensión .js es obligatoria)
 import * as courses from "./modules/courses.js";
+import createCoursesRouter from "./routes/courses.js";
 
 // import.meta.dirname = carpeta de este fichero -> asi funciona se ejecute donde se ejecute
 const dataFile = join(import.meta.dirname, "data", "courses.json");
@@ -29,30 +30,31 @@ if (!courses.isValidCatalog(catalog)) {
     process.exit(1);
 }
 
-/* Posición	     Contenido con node app.js ingl
-     [0]	       Ruta del ejecutable de Node
-     [1]	             Ruta de app.js
-     [2]	              ej: "ingl"
-*/
-const search = process.argv[2]; // Se lee el argumento [2] de la terminal 
+const app = express();
 
-/*Si se pasó un texto de búsqueda, shown son los cursos filtrados.
-  Si no (search es undefined, que cuenta como falso), son todos.*/
-const shown = search ? courses.searchByName(catalog, search) : catalog;
-if (search) console.log(`\nCursos que contienen "${search}":`);
+// Middleware: convierte el cuerpo JSON de las peticiones en req.body
+app.use(express.JSON);
 
-console.table(
-    shown.map((c) => ({ // map crea un array nuevo haciendo que cada curso sea un objeto nuevo con nombres de columna
-        ID: c.id,
-        Nombre: c.name,
-        Categoria: c.category,
-        "Duracion (min)": c.duration,
-        Plazas: c.places === 0 ? "Completo" : c.places,
-    })),
-);
+// Rutas de la API de cursos
+app.use("/api/cursos", createCoursesRouter(catalog));
 
-console.log(
-    `Total: ${catalog.length} cursos, ` +
-    `${courses.withPlaces(catalog).length} con plazas, ` +
-    `${courses.fullCourses(catalog).length} completos`,
-);
+// Cualquier otra ruta: 404 en JSON
+app.use((req, res) => {
+    res.status(400).json({error: "Ruta no encontrada"});
+});
+
+app.use((err, req, res, next) => {
+    if(err.type === "entity.parse.failed"){
+        return res.status(400).json({error: "El cuerpo de la petición no es un JSON válido"});
+    }
+    console.error(err);
+    res.status(500).json({error: "Error interno del servidor"});
+});
+
+app.listen(PORT, (error) =>{
+    if(error) {
+        console.error("No se pudo arrancar el servidor", error.message);
+        process.exit(1);
+    }
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+} );
