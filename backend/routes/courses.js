@@ -7,7 +7,7 @@ function createCoursesRouter(catalog){
 
     // GET /api/cursos                -> todos los cursos
     // GET /api/cursos?nombre=ingl    -> filtrados por nombre
-    //GET /api/curos?disponibles=true -> solo los que tienen plazas
+    // GET /api/curos?disponibles=true -> solo los que tienen plazas
 
     router.get("/", (req, res) => {
         let result = catalog;
