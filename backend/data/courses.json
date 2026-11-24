@@ -1,6 +1,0 @@
-[
-    { "id": 1, "name": "Matemáticas", "category": "Ciencias", "duration": 60, "places": 12 },
-    { "id": 2, "name": "Dibujo técnico", "category": "Ingeniería", "duration": 120, "places": 4 },
-    { "id": 3, "name": "Inglés", "category": "Idiomas", "duration": 30, "places": 20 },
-    { "id": 4, "name": "Programación web", "category": "Informática", "duration": 90, "places": 0 }
-]
