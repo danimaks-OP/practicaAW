@@ -1,104 +1,76 @@
-let courses = [
-    {
-        id: 1,
-        name: "Matemáticas",
-        category: "Ciencias",
-        duration: 60,
-        places: 12
-    },
-    {
-        id: 2,
-        name: "Dibujo técnico",
-        category: "Ingeniería",
-        duration: 120,
-        places: 4
-    },
-    {
-        id: 3,
-        name: "Inglés",
-        category: "Idiomas",
-        duration: 30,
-        places: 20
-    }
-]
-
-function deleteCourse(id) {
-    const index = courses.findIndex((elem) => elem.id === id);
-    courses.splice(index, 1);
-    try {
-        localStorage.setItem("courses", JSON.stringify(courses));
-    } catch (e) {
-        console.warn("No se pudieron guardar los cursos en localStorage: ", e);
-    }
-    drawTable();
-}
-
-function createDeleteButton(courseId) {
-    const btn = document.createElement("button");
-    btn.textContent = "Eliminar";
-    btn.classList.add("btn", "btn-danger");
-    btn.addEventListener("click", () => deleteCourse(courseId));
-    const td_btn = document.createElement("td");
-    td_btn.append(btn);
-    return td_btn;
-}
+let courses = [];
 
 const coursesTable = document.getElementById("courses_tab");
 const nCourses = document.getElementById("n_courses");
+const statusBox = document.getElementById("courses_status");
 
 // Elegimos que el tipo de filtro se mantenga en local y la busqueda por nombre sea por sesion
 let filter_name = sessionStorage.getItem("filter_name") ? sessionStorage.getItem("filter_name") : "";
 let filter_type = localStorage.getItem("filter_type") ? localStorage.getItem("filter_type") : "";
 
+
+function formatDate(iso) {
+    if (!iso) return "—";
+    const [y, m, d] = iso.slice(0, 10).split("-");
+    return `${d}/${m}/${y}`;
+}
+
+function createCell(text) {
+    const td = document.createElement("td");
+    td.textContent = text ?? "—";
+    return td;
+}
+
 function drawTable() {
     const frag = document.createDocumentFragment();
-
     const f = filter_name.trim().toLowerCase();
-    const filteredCourses = courses.filter((c) => c.name.toLowerCase().includes(f));
 
-    let count = 0;
-    for (const c in filteredCourses) {
-        if (filter_type === "full" && filteredCourses[c].places === 0)
-            continue;
+    const filteredCourses = courses.filter((c) =>
+        c.nombre.toLowerCase().includes(f) &&
+        !(filter_type === "full" && (c.plazas_libres === 0 || c.estado !== "activo"))
+    );
+
+    for (const c of filteredCourses) {
         const tr = document.createElement("tr");
-        for (const k in filteredCourses[c]) {
-            const td = document.createElement("td");
-            if (k === "places" && filteredCourses[c][k] === 0) {
-                td.textContent = "Completo";
-                tr.classList.add("table-danger");
-            } else {
-                td.textContent = filteredCourses[c][k];
-            }
-            tr.append(td);
-        }
-        let td_btn = createDeleteButton(filteredCourses[c].id);
-        tr.append(td_btn);
+        if (c.plazas_libres === 0) tr.classList.add("table-danger");
+
+        tr.append(
+            createCell(c.id_curso),
+            createCell(c.nombre),
+            createCell(c.docente),
+            createCell(c.aula),
+            createCell(`${formatDate(c.fecha_inicio)} – ${formatDate(c.fecha_fin)}`),
+            createCell(c.horario),
+            createCell(c.plazas_libres === 0 ? "Completo" : `${c.plazas_libres} de ${c.plazas}`),
+            createCell(c.estado === "activo" ? "Activo" : "Inactivo")
+        );
         frag.append(tr);
-        count++;
     }
 
     coursesTable.replaceChildren(frag);
-    nCourses.textContent = count;
+    nCourses.textContent = filteredCourses.length;
 }
 
-
-// Inicializacion cursos
-
-const savedCourses = localStorage.getItem("courses");
-if (savedCourses) {
-    try {
-        const parsed = JSON.parse(savedCourses);
-        if (parsed.every((c) => Number.isInteger(c.id) && c.name && c.category && Number.isInteger(c.duration) && Number.isInteger(c.places))) {
-            courses = parsed;
-        } else {
-            throw new Error("Formato de curso incorrecto");
+async function loadCourses(){
+    statusBox.textContent = "Cargando cursos...";
+    try{
+        const response = await fetch("/api/cursos", { headers: { Accept: "application/json" } });
+        if(!response.ok){
+            const body = await response.json().catch(() => ({}));
+            throw new Error(body.error ?? `Error HTTP ${response.status}`);
         }
-    } catch (e) {
-        console.warn("JSON de cursos guardados incorrecto, se usan los cursos por defecto: ", e);
-        localStorage.removeItem("courses");
+        courses = await response.json();
+        statusBox.textContent = courses.length === 0 ? "No hay cursos registrados." : "";
+    }catch(err){
+        console.error("No se pudo cargar el catálogo:", err);
+        courses = [];
+        // TypeError = el servidor no respondió (apagado o sin red)
+        statusBox.textContent = err instanceof TypeError
+            ? "No se pudo conectar con el servidor."
+            : `No se pudo cargar el catálogo: ${err.message}`;
     }
+    drawTable();
 }
-
 
 // Filtrar nombre de cursos
 
@@ -134,51 +106,4 @@ select_courses.addEventListener("change", function () {
 
 // Dibujar tabla inicial
 
-drawTable();
-
-
-// Formulario añadir cursos
-
-const form = document.getElementById("course_form");
-
-const name = form["name_course"];
-const category = form["category_course"];
-const duration = form["duration_course"];
-const places = form["places_course"];
-
-const inputs = [name, category, duration, places];
-inputs.forEach((elem) => elem.addEventListener("input", () => elem.setCustomValidity("")));
-
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    if (name.value.trim() === "") {
-        name.setCustomValidity("El nombre no puede ser un campo vacío");
-    }
-
-    if (category.value.trim() === "") {
-        category.setCustomValidity("La categoría no puede ser un campo vacío");
-    }
-
-    if (!form.reportValidity()) return;
-
-    let course = {
-        id: courses.length > 0 ? courses[courses.length - 1].id + 1 : 1,
-        name: name.value.trim(),
-        category: category.value.trim(),
-        duration: parseInt(duration.value),
-        places: parseInt(places.value)
-    };
-
-    courses.push(course);
-
-    try {
-        localStorage.setItem("courses", JSON.stringify(courses));
-    } catch (e) {
-        console.warn("No se pudieron guardar los cursos en localStorage: ", e);
-    }
-
-    drawTable(courses);
-
-    form.reset();
-});
+loadCourses();

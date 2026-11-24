@@ -87,51 +87,24 @@
                 <div class="text-end">
                     <p class="m-0 mb-1"><span id="n_courses"></span> cursos encontrados</p>
                 </div>
+                <div id="courses_status" role="status" aria-live="polite"></div>
                 <table class="table table-primary mb-0">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Categoría</th>
-                            <th>Duración</th>
-                            <th>Plazas disponibles</th>
-                            <th>Acciones</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Docente</th>
+                            <th scope="col">Aula</th>
+                            <th scope="col">Fechas</th>
+                            <th scope="col">Horario</th>
+                            <th scope="col">Plazas libres</th>
+                            <th scope="col">Estado</th>
                         </tr>
                     </thead>
                     <tbody id="courses_tab">
                     </tbody>
                 </table>
             </div>
-            <section class="container my-5">
-                <h2 class="my-3">Agregar curso</h2>
-                <form id="course_form">
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label for="name_course">Nombre</label>
-                            <input type="text" name="name_course" id="name_course" class="form-control"
-                                placeholder="Nombre del curso" maxlength="32" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="category_course">Categoría</label>
-                            <input type="text" name="category_course" id="category_course" class="form-control"
-                                placeholder="Categoría a la que pertenece" maxlength="32" required>
-                        </div>
-                    </div>
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label for="duration_course">Duración</label>
-                            <input type="number" name="duration_course" id="duration_course" class="form-control"
-                                placeholder="Duración en minutos" min="1" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="places_course">Plazas disponibles</label>
-                            <input type="number" name="places_course" id="places_course" class="form-control"
-                                placeholder="Introduzca las plazas disponibles" min="0" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn w-100 mt-2">Añadir curso</button>
-                </form>
-            </section>
         </div>
     </main>
     <footer class="d-flex flex-wrap justify-content-between">
