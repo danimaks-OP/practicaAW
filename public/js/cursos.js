@@ -51,25 +51,27 @@ function drawTable() {
     nCourses.textContent = filteredCourses.length;
 }
 
-async function loadCourses(){
-    statusBox.textContent = "Cargando cursos...";
-    try{
-        const response = await fetch("/api/cursos", { headers: { Accept: "application/json" } });
-        if(!response.ok){
-            const body = await response.json().catch(() => ({}));
-            throw new Error(body.error ?? `Error HTTP ${response.status}`);
-        }
-        courses = await response.json();
-        statusBox.textContent = courses.length === 0 ? "No hay cursos registrados." : "";
-    }catch(err){
-        console.error("No se pudo cargar el catálogo:", err);
-        courses = [];
-        // TypeError = el servidor no respondió (apagado o sin red)
-        statusBox.textContent = err instanceof TypeError
-            ? "No se pudo conectar con el servidor."
-            : `No se pudo cargar el catálogo: ${err.message}`;
-    }
+function mostrarCursos(cursos){
+    courses = cursos;
+    statusBox.textContent = courses.length === 0 ? "No hay cursos registrados." : "";
     drawTable();
+}
+
+// Mostrar mensaje de error y dejar la tabla vacía
+function mostrarError(mensaje){
+    courses = [];
+    statusBox.textContent = mensaje;
+    drawTable();
+}
+
+// Pide los cursos a la API
+function loadCourses(){
+    statusBox.textContent = "Cargando cursos...";
+
+    fetch('/api/cursos')
+        .then(r => { if(!r.ok) throw new Error("Error HTTP"); return r.json();})
+        .then(cursos => mostrarCursos(cursos))
+        .catch(() => mostrarError("No se puede cargar el catálogo"));
 }
 
 // Filtrar nombre de cursos
