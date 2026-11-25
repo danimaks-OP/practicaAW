@@ -49,7 +49,7 @@ function drawTable() {
     let count = 0;
     for (const c of filteredCourses) {
         const plazas_libres = c.plazas - c.matriculados;
-        if (filter_type === "full" && plazas_libres === 0)
+        if (filter_type === "full" && plazas_libres <= 0)
             continue;
         const tr = document.createElement("tr");
 
@@ -134,20 +134,37 @@ select_courses.addEventListener("change", function () {
 });
 
 
-// Inicializacion cursos
+// Carga de cursos
 
-showLoadingTable();
+function loadCourses() {
 
-fetch('/api/cursos').then(async r => {
-    if(!r.ok){
-        throw new Error('Error HTTP');
-    }
-    courses = await r.json();
-    drawTable();
-}).catch((e) => {
-    console.warn(e);
-    showErrorTable('No se pudo cargar el catálogo');
-});
+    showLoadingTable();
+
+    fetch('/api/cursos').then(async r => {
+        if (!r.ok) {
+            throw new Error('Error HTTP');
+        }
+        courses = await r.json();
+        drawTable();
+    }).catch((e) => {
+        console.warn(e);
+        showErrorTable('No se pudo cargar el catálogo');
+    });
+}
+
+
+// Inicializar cursos
+
+loadCourses();
+
+
+// Modal
+
+function showModal(title, info){
+    document.getElementById("statusTitle").textContent = title;
+    document.getElementById("statusInfo").textContent = info;
+    bootstrap.Modal.getOrCreateInstance(document.getElementById("statusModal")).show();
+}
 
 
 // Formulario añadir cursos
@@ -155,43 +172,84 @@ fetch('/api/cursos').then(async r => {
 const form = document.getElementById("course_form");
 
 const name = form["name_course"];
-const category = form["category_course"];
-const duration = form["duration_course"];
 const places = form["places_course"];
+const id_docente = form["id_docente"];
+const id_aula = form["id_aula"];
+const init_date = form["init_date"];
+const end_date = form["end_date"];
+const description = form["description_course"];
+const schedule = form["schedule"];
 
-const inputs = [name, category, duration, places];
+const inputs = [name, places, id_docente, id_aula, init_date, end_date, description, schedule];
 inputs.forEach((elem) => elem.addEventListener("input", () => elem.setCustomValidity("")));
 
-form.addEventListener("submit", function (e) {
+init_date.addEventListener("input", () => end_date.setCustomValidity(""));
+end_date.addEventListener("input", () => init_date.setCustomValidity(""));
+
+form.addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    if (name.value.trim() === "") {
-        name.setCustomValidity("El nombre no puede ser un campo vacío");
-    }
+    if (name.value.trim() === "")
+        name.setCustomValidity("El nombre no puede estar vacío");
 
-    if (category.value.trim() === "") {
-        category.setCustomValidity("La categoría no puede ser un campo vacío");
-    }
+    if (places.value === "" || Number(places.value) < 1)
+        places.setCustomValidity("Las plazas deben ser un número mayor o igual a 1");
+
+    if (id_docente.value === "" || Number(id_docente.value) <= 0 || !Number.isInteger(Number(id_docente.value)))
+        id_docente.setCustomValidity("El ID del docente debe ser un entero positivo");
+
+    if (id_aula.value === "" || Number(id_aula.value) <= 0 || !Number.isInteger(Number(id_aula.value)))
+        id_aula.setCustomValidity("El ID del aula debe ser un entero positivo");
+
+    if (init_date.value === "")
+        init_date.setCustomValidity("La fecha de inicio es obligatoria");
+
+    if (end_date.value === "")
+        end_date.setCustomValidity("La fecha de fin es obligatoria");
+
+    if (init_date.value !== "" && end_date.value !== "" && init_date.value > end_date.value)
+        end_date.setCustomValidity("La fecha de fin no puede ser anterior a la fecha de inicio");
 
     if (!form.reportValidity()) return;
 
     let course = {
-        id: courses.length > 0 ? courses[courses.length - 1].id + 1 : 1,
-        name: name.value.trim(),
-        category: category.value.trim(),
-        duration: parseInt(duration.value),
-        places: parseInt(places.value)
+        nombre: name.value.trim(),
+        id_docente: Number(id_docente.value),
+        id_aula: Number(id_aula.value),
+        plazas: Number(places.value),
+        fecha_inicio: init_date.value,
+        fecha_fin: end_date.value,
     };
 
-    courses.push(course);
+    if(description.value.trim() !== "")
+        course.descripcion = description.value.trim();
 
-    try {
-        localStorage.setItem("courses", JSON.stringify(courses));
-    } catch (e) {
-        console.warn("No se pudieron guardar los cursos en localStorage: ", e);
+    if(schedule.value.trim() !== "")
+        course.horario = schedule.value.trim();
+
+    let res;
+    try{
+        res = await fetch('/api/cursos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(course)
+    });
+    }catch(e){
+        showModal("ERROR", "No se ha podido insertar el curso por un error en la conexión");
+        return;
     }
 
-    drawTable(courses);
+    if(!res.ok){
+        const error_data = await res.json();
+        showModal("ERROR", `Se ha producido un error al intentar insertar el curso: ${error_data.error}`);
+        return;
+    }
+
+    showModal("Éxito", "Se ha insertado el curso con éxito");
+
+    loadCourses();
 
     form.reset();
 });

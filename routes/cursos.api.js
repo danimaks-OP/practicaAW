@@ -12,4 +12,13 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+router.post('/', async (req, res, next) => {
+    try{
+        await cursosService.insertar(req.body);
+        res.sendStatus(201);
+    }catch(e){
+        next(e);
+    }
+});
+
 export default router;
