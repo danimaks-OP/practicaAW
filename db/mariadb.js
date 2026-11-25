@@ -11,11 +11,10 @@ async function query(sql, params){
     const connection = await pool.getConnection();
     try{
         return await connection.query(sql, params);
-    }catch(e){
-        throw new Error(`Data Base Error: ${e}`);
-    }finally{
+    }
+    finally{
         await connection.release();
     }
 }
 
-module.exports = query;
+export default { query };

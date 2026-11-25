@@ -1,10 +1,15 @@
 import { Router } from 'express';
-import cursosService from '../services/cursos'
+import cursosService from '../services/cursos.js'
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    return cursosService.listar();
+router.get('/', async (req, res, next) => {
+    try{
+        const cursos = await cursosService.listar();
+        res.json(cursos);
+    }catch(e){
+        next(e);
+    }
 });
 
-module.exports = router;
+export default router;

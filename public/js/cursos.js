@@ -1,26 +1,4 @@
-let courses = [
-    {
-        id: 1,
-        name: "Matemáticas",
-        category: "Ciencias",
-        duration: 60,
-        places: 12
-    },
-    {
-        id: 2,
-        name: "Dibujo técnico",
-        category: "Ingeniería",
-        duration: 120,
-        places: 4
-    },
-    {
-        id: 3,
-        name: "Inglés",
-        category: "Idiomas",
-        duration: 30,
-        places: 20
-    }
-]
+let courses = [];
 
 function deleteCourse(id) {
     const index = courses.findIndex((elem) => elem.id === id);
@@ -50,29 +28,49 @@ const nCourses = document.getElementById("n_courses");
 let filter_name = sessionStorage.getItem("filter_name") ? sessionStorage.getItem("filter_name") : "";
 let filter_type = localStorage.getItem("filter_type") ? localStorage.getItem("filter_type") : "";
 
+
+function createTableData(tr, text){
+    const td = document.createElement("td");
+    td.textContent = text;
+    tr.append(td);
+}
+
+function formatDate(date) {
+    const [y, m, d] = date.slice(0, 10).split("-");
+    return `${d}/${m}/${y}`;
+}
+
 function drawTable() {
     const frag = document.createDocumentFragment();
 
     const f = filter_name.trim().toLowerCase();
-    const filteredCourses = courses.filter((c) => c.name.toLowerCase().includes(f));
+    const filteredCourses = courses.filter((c) => c.nombre.toLowerCase().includes(f));
 
     let count = 0;
-    for (const c in filteredCourses) {
-        if (filter_type === "full" && filteredCourses[c].places === 0)
+    for (const c of filteredCourses) {
+        const plazas_libres = c.plazas - c.matriculados;
+        if (filter_type === "full" && plazas_libres === 0)
             continue;
         const tr = document.createElement("tr");
-        for (const k in filteredCourses[c]) {
-            const td = document.createElement("td");
-            if (k === "places" && filteredCourses[c][k] === 0) {
-                td.textContent = "Completo";
-                tr.classList.add("table-danger");
-            } else {
-                td.textContent = filteredCourses[c][k];
-            }
-            tr.append(td);
+
+        createTableData(tr, c.id_curso);
+        createTableData(tr, c.nombre);
+        createTableData(tr, c.descripcion);
+        createTableData(tr, c.docente);
+        createTableData(tr, c.aula);
+        createTableData(tr, `${formatDate(c.fecha_inicio)} - ${formatDate(c.fecha_fin)}`);
+        createTableData(tr, c.horario);
+
+        if((plazas_libres === 0)) tr.classList.add("table-danger");
+        createTableData(tr, (plazas_libres === 0) ? "Completo" : `${plazas_libres}/${c.plazas}`);
+
+        createTableData(tr, c.estado);
+        if(c.estado === "activo"){
+            tr.append(createDeleteButton(c.id_curso));
+        }else{
+            createTableData(tr, "");
         }
-        let td_btn = createDeleteButton(filteredCourses[c].id);
-        tr.append(td_btn);
+        
         frag.append(tr);
         count++;
     }
@@ -81,22 +79,26 @@ function drawTable() {
     nCourses.textContent = count;
 }
 
+function showErrorTable(error){
+    const tr = document.createElement("tr");
+    tr.classList.add("table-danger");
+    const td = document.createElement("td");
+    td.setAttribute("colspan", "10");
+    td.textContent = error;
+    tr.append(td);
+    coursesTable.replaceChildren(tr);
+    nCourses.textContent = "-";
+}
 
-// Inicializacion cursos
-
-const savedCourses = localStorage.getItem("courses");
-if (savedCourses) {
-    try {
-        const parsed = JSON.parse(savedCourses);
-        if (parsed.every((c) => Number.isInteger(c.id) && c.name && c.category && Number.isInteger(c.duration) && Number.isInteger(c.places))) {
-            courses = parsed;
-        } else {
-            throw new Error("Formato de curso incorrecto");
-        }
-    } catch (e) {
-        console.warn("JSON de cursos guardados incorrecto, se usan los cursos por defecto: ", e);
-        localStorage.removeItem("courses");
-    }
+function showLoadingTable(){
+    const tr = document.createElement("tr");
+    tr.classList.add("table-info");
+    const td = document.createElement("td");
+    td.setAttribute("colspan", "10");
+    td.textContent = "Cargando...";
+    tr.append(td);
+    coursesTable.replaceChildren(tr);
+    nCourses.textContent = "-";
 }
 
 
@@ -132,9 +134,20 @@ select_courses.addEventListener("change", function () {
 });
 
 
-// Dibujar tabla inicial
+// Inicializacion cursos
 
-drawTable();
+showLoadingTable();
+
+fetch('/api/cursos').then(async r => {
+    if(!r.ok){
+        throw new Error('Error HTTP');
+    }
+    courses = await r.json();
+    drawTable();
+}).catch((e) => {
+    console.warn(e);
+    showErrorTable('No se pudo cargar el catálogo');
+});
 
 
 // Formulario añadir cursos
